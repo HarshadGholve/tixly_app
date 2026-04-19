@@ -392,6 +392,19 @@
                 }
             ],
             "failed_attempts": 2
+        },
+        "c-1776621348944-912": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Request software"
+                },
+                {
+                    "role": "bot",
+                    "content": "Standard peripherals (mice, keyboards, headsets) can be picked up directly from the IT Helpdesk on the 2nd floor between 9 AM and 4 PM. No ticket is required for standard items.\n\nDid this resolve your issue? (Yes/No)"
+                }
+            ],
+            "failed_attempts": 0
         }
     },
     "kb": [
