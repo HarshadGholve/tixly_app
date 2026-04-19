@@ -1,0 +1,517 @@
+{
+    "users": [
+        {
+            "id": "u1",
+            "name": "Elena Rodriguez",
+            "email": "elena.r@company.com",
+            "role": "User",
+            "password": "password123"
+        },
+        {
+            "id": "u2",
+            "name": "David Kim",
+            "email": "david.k@company.com",
+            "role": "User",
+            "password": "password123"
+        },
+        {
+            "id": "u3",
+            "name": "Stefanie Corn",
+            "email": "s.corn@company.com",
+            "role": "User",
+            "password": "password123"
+        },
+        {
+            "id": "a1",
+            "name": "Alex System",
+            "email": "alex.s@company.com",
+            "role": "Admin",
+            "password": "password123"
+        },
+        {
+            "id": "a2",
+            "name": "Marcus Chen",
+            "email": "m.chen@company.com",
+            "role": "Technician",
+            "password": "password123"
+        },
+        {
+            "id": "a3",
+            "name": "Sarah Jenkins",
+            "email": "sarah.j@company.com",
+            "role": "Admin",
+            "password": "password123"
+        },
+        {
+            "id": "u-e0f9c0d0",
+            "name": "Harshad Gholve",
+            "email": "harshad.gholve123@gmail.com",
+            "role": "User"
+        }
+    ],
+    "tickets": [
+        {
+            "id": "TK-9740",
+            "user_id": "u2",
+            "subject": "VPN Access Failed - London Office",
+            "category": "Software",
+            "status": "In Progress",
+            "priority": "P3 - MEDIUM",
+            "created_at": "2026-04-18T18:59:27.539770",
+            "assignee_id": "a2",
+            "assignee": {
+                "id": "a2",
+                "name": "Marcus Chen",
+                "email": "m.chen@company.com",
+                "role": "Technician"
+            }
+        },
+        {
+            "id": "TK-8939",
+            "user_id": "u1",
+            "subject": "Laptop screen flickering in conference room B",
+            "category": "Hardware",
+            "status": "Open",
+            "priority": "P2 - HIGH",
+            "created_at": "2026-04-18T20:49:27.539771"
+        },
+        {
+            "id": "TK-8938",
+            "user_id": "u1",
+            "subject": "Software installation request: Figma",
+            "category": "Software",
+            "status": "In Progress",
+            "priority": "P3 - MEDIUM",
+            "created_at": "2026-04-18T18:59:27.539773"
+        },
+        {
+            "id": "TK-8944",
+            "user_id": "u1",
+            "subject": "Node.js npm install giving EACCES permission errors",
+            "category": "Development",
+            "status": "Open",
+            "priority": "P3 - MEDIUM",
+            "created_at": "2026-04-18T20:54:27.539775"
+        },
+        {
+            "id": "TK-8912",
+            "user_id": "u2",
+            "subject": "Printer on 3rd floor offline",
+            "category": "Hardware",
+            "status": "Open",
+            "priority": "P4 - LOW",
+            "created_at": "2026-04-17T20:59:27.539777"
+        },
+        {
+            "id": "TK-8890",
+            "user_id": "u2",
+            "subject": "Password reset for email",
+            "category": "Access",
+            "status": "Resolved",
+            "priority": "P4 - LOW",
+            "created_at": "2026-04-15T20:59:27.539778"
+        },
+        {
+            "id": "TK-8945",
+            "user_id": "u3",
+            "subject": "Adobe Acrobat keeps crashing on startup",
+            "category": "Software",
+            "status": "Open",
+            "priority": "P4 - LOW",
+            "created_at": "2026-04-18T15:59:27.539781"
+        },
+        {
+            "id": "TK-8946",
+            "user_id": "u1",
+            "subject": "Requesting an ergonomic wireless mouse",
+            "category": "Hardware",
+            "status": "Resolved",
+            "priority": "P4 - LOW",
+            "created_at": "2026-04-13T20:59:27.539783"
+        },
+        {
+            "id": "TK-8947",
+            "user_id": "u2",
+            "subject": "Cannot access shared Marketing Drive (Google Workspace)",
+            "category": "Access",
+            "status": "In Progress",
+            "priority": "P3 - MEDIUM",
+            "created_at": "2026-04-18T19:59:27.539785"
+        },
+        {
+            "id": "TK-9190",
+            "user_id": "u-e0f9c0d0",
+            "subject": "Auto-Escalated Support Ticket",
+            "category": "Escalated",
+            "status": "Open",
+            "history": [
+                {
+                    "role": "user",
+                    "content": "VPN issue"
+                },
+                {
+                    "role": "bot",
+                    "content": "VPN authentication failures are often due to a desynced 2FA token. Open the Cisco AnyConnect client, clear the cache, and re-authenticate. If it still fails, check your WiFi stability.\n\nDid this resolve your issue? (Yes/No)"
+                },
+                {
+                    "role": "user",
+                    "content": "Escalate to human"
+                },
+                {
+                    "role": "bot",
+                    "content": "I apologize, but I am unable to resolve this. I have escalated this to our human IT team. Your ticket ID is **TK-9190**."
+                }
+            ],
+            "created_at": "2026-04-18T21:36:29.649629"
+        },
+        {
+            "id": "TK-1845",
+            "user_id": "u-e0f9c0d0",
+            "subject": "Auto-Escalated Support Ticket",
+            "category": "Escalated",
+            "status": "Open",
+            "priority": "P3 - MEDIUM",
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Reset password"
+                },
+                {
+                    "role": "bot",
+                    "content": "I can help with that, but I need a bit more information.\n\nWhich password are you trying to reset?\n\u2022 Windows login  \n\u2022 Email account (Gmail, Outlook, etc.)  \n\u2022 Office 365 / Microsoft account  \n\u2022 Mac login  \n\u2022 Something else  \n\nLet me know the account or system, and I\u2019ll give you the exact steps.\n\nDid this resolve your issue? (Yes/No)"
+                },
+                {
+                    "role": "user",
+                    "content": "Email"
+                },
+                {
+                    "role": "bot",
+                    "content": "I can help with that. What specific email issue are you experiencing?\n\nExamples:\n\u2022 Trouble sending or receiving emails  \n\u2022 Password or login problems  \n\u2022 Email not syncing on phone or computer  \n\u2022 Setting up a new email account  \n\u2022 Missing or deleted messages  \n\nTell me what\u2019s going on and I\u2019ll guide you through it.\n\nDid this resolve your issue? (Yes/No)"
+                },
+                {
+                    "role": "user",
+                    "content": "No"
+                },
+                {
+                    "role": "bot",
+                    "content": "I'm sorry that didn't work. Could you provide a bit more detail about the error?"
+                },
+                {
+                    "role": "user",
+                    "content": "No"
+                },
+                {
+                    "role": "bot",
+                    "content": "I apologize, but I am unable to resolve this. I have escalated this to our human IT team. Your ticket ID is **TK-1845**."
+                }
+            ],
+            "created_at": "2026-04-19T14:21:38.723793",
+            "updated_at": "2026-04-19T14:21:38.723807"
+        },
+        {
+            "id": "TK-4222",
+            "user_id": "u-e0f9c0d0",
+            "subject": "Auto-Escalated Support Ticket",
+            "category": "Escalated",
+            "status": "Open",
+            "priority": "P3 - MEDIUM",
+            "history": [
+                {
+                    "role": "user",
+                    "content": "VPN issue"
+                },
+                {
+                    "role": "bot",
+                    "content": "VPN authentication failures are often due to a desynced 2FA token. Open the Cisco AnyConnect client, clear the cache, and re-authenticate. If it still fails, check your WiFi stability.\n\nDid this resolve your issue? (Yes/No)"
+                },
+                {
+                    "role": "user",
+                    "content": "No"
+                },
+                {
+                    "role": "bot",
+                    "content": "I'm sorry that didn't work. Could you provide a bit more detail about the error?"
+                },
+                {
+                    "role": "user",
+                    "content": "No"
+                },
+                {
+                    "role": "bot",
+                    "content": "I apologize, but I am unable to resolve this. I have escalated this to our human IT team. Your ticket ID is **TK-4222**."
+                }
+            ],
+            "created_at": "2026-04-19T14:30:13.714248",
+            "updated_at": "2026-04-19T14:30:13.714261"
+        }
+    ],
+    "chats": {
+        "c-1776528384060-594": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "VPN issue"
+                },
+                {
+                    "role": "bot",
+                    "content": "VPN authentication failures are often due to a desynced 2FA token. Open the Cisco AnyConnect client, clear the cache, and re-authenticate. If it still fails, check your WiFi stability.\n\nDid this resolve your issue? (Yes/No)"
+                },
+                {
+                    "role": "user",
+                    "content": "Escalate to human"
+                },
+                {
+                    "role": "bot",
+                    "content": "I apologize, but I am unable to resolve this. I have escalated this to our human IT team. Your ticket ID is **TK-9190**."
+                }
+            ],
+            "failed_attempts": 0
+        },
+        "c-1776531881000-539": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Request software"
+                },
+                {
+                    "role": "bot",
+                    "content": "Standard peripherals (mice, keyboards, headsets) can be picked up directly from the IT Helpdesk on the 2nd floor between 9 AM and 4 PM. No ticket is required for standard items.\n\nDid this resolve your issue? (Yes/No)"
+                },
+                {
+                    "role": "user",
+                    "content": "Yes"
+                },
+                {
+                    "role": "bot",
+                    "content": "Great! I'm glad I could help. Closing this chat."
+                }
+            ],
+            "failed_attempts": 0
+        },
+        "c-1776588576389-823": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "VPN issue"
+                },
+                {
+                    "role": "bot",
+                    "content": "[LLM Response] Based on your query 'VPN issue', I have analyzed our knowledge base and IT runbook database. Here are my recommended steps: Please restart the affected service, clear your local cache, and if the issue persists, our team will escalate to a Level 2 technician automatically.\n\nDid this resolve your issue? (Yes/No)"
+                }
+            ],
+            "failed_attempts": 0
+        },
+        "c-1776588616030-834": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Request software"
+                },
+                {
+                    "role": "bot",
+                    "content": "I couldn't find a direct fix for that. Could you try rephrasing your issue?"
+                }
+            ],
+            "failed_attempts": 0
+        },
+        "c-1776588634495-667": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Request software"
+                },
+                {
+                    "role": "bot",
+                    "content": "I can help with that \u2014 I just need a bit more information.\n\nPlease specify:\n\u2022 The software you need  \n\u2022 The device or operating system (Windows, macOS, etc.)  \n\u2022 Whether you need installation, access, or a license  \n\nOnce I have that, I\u2019ll provide the exact steps.\n\nDid this resolve your issue? (Yes/No)"
+                }
+            ],
+            "failed_attempts": 0
+        },
+        "c-1776588655086-392": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Reset password"
+                },
+                {
+                    "role": "bot",
+                    "content": "I can help with that, but I need a bit more information.\n\nWhich password are you trying to reset?\n\u2022 Windows login  \n\u2022 Email account (Gmail, Outlook, etc.)  \n\u2022 Office 365 / Microsoft account  \n\u2022 Mac login  \n\u2022 Something else  \n\nLet me know the account or system, and I\u2019ll give you the exact steps.\n\nDid this resolve your issue? (Yes/No)"
+                },
+                {
+                    "role": "user",
+                    "content": "Email"
+                },
+                {
+                    "role": "bot",
+                    "content": "I can help with that. What specific email issue are you experiencing?\n\nExamples:\n\u2022 Trouble sending or receiving emails  \n\u2022 Password or login problems  \n\u2022 Email not syncing on phone or computer  \n\u2022 Setting up a new email account  \n\u2022 Missing or deleted messages  \n\nTell me what\u2019s going on and I\u2019ll guide you through it.\n\nDid this resolve your issue? (Yes/No)"
+                },
+                {
+                    "role": "user",
+                    "content": "No"
+                },
+                {
+                    "role": "bot",
+                    "content": "I'm sorry that didn't work. Could you provide a bit more detail about the error?"
+                },
+                {
+                    "role": "user",
+                    "content": "No"
+                },
+                {
+                    "role": "bot",
+                    "content": "I apologize, but I am unable to resolve this. I have escalated this to our human IT team. Your ticket ID is **TK-1845**."
+                }
+            ],
+            "failed_attempts": 2
+        },
+        "c-1776589201158-436": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "VPN issue"
+                },
+                {
+                    "role": "bot",
+                    "content": "VPN authentication failures are often due to a desynced 2FA token. Open the Cisco AnyConnect client, clear the cache, and re-authenticate. If it still fails, check your WiFi stability.\n\nDid this resolve your issue? (Yes/No)"
+                },
+                {
+                    "role": "user",
+                    "content": "No"
+                },
+                {
+                    "role": "bot",
+                    "content": "I'm sorry that didn't work. Could you provide a bit more detail about the error?"
+                },
+                {
+                    "role": "user",
+                    "content": "No"
+                },
+                {
+                    "role": "bot",
+                    "content": "I apologize, but I am unable to resolve this. I have escalated this to our human IT team. Your ticket ID is **TK-4222**."
+                }
+            ],
+            "failed_attempts": 2
+        }
+    },
+    "kb": [
+        {
+            "id": "kb1",
+            "category": "Access",
+            "keywords": [
+                "password",
+                "reset",
+                "forgot",
+                "locked"
+            ],
+            "resolution_steps": "To reset your password, please navigate to identity.company.com/reset. You will need your mobile device to approve the Okta Verify push notification."
+        },
+        {
+            "id": "kb2",
+            "category": "Network",
+            "keywords": [
+                "vpn",
+                "connect",
+                "timeout",
+                "authentication failed",
+                "cisco"
+            ],
+            "resolution_steps": "VPN authentication failures are often due to a desynced 2FA token. Open the Cisco AnyConnect client, clear the cache, and re-authenticate. If it still fails, check your WiFi stability."
+        },
+        {
+            "id": "kb3",
+            "category": "Hardware",
+            "keywords": [
+                "printer",
+                "offline",
+                "print",
+                "jam"
+            ],
+            "resolution_steps": "If the printer shows as offline, first verify it has paper and no paper jams. Then, press and hold the WiFi button on the printer for 3 seconds to reconnect it to the 'Corp-Devices' network."
+        },
+        {
+            "id": "kb4",
+            "category": "Software",
+            "keywords": [
+                "figma",
+                "install",
+                "license",
+                "software request"
+            ],
+            "resolution_steps": "Figma licenses require manager approval. Since you requested Figma, I am automatically routing a license provisioning request to your department head. Once approved, it will appear in your Self-Service App Portal."
+        },
+        {
+            "id": "kb5",
+            "category": "Hardware",
+            "keywords": [
+                "flickering",
+                "screen",
+                "monitor",
+                "display",
+                "conference"
+            ],
+            "resolution_steps": "Monitor flickering is usually caused by a loose HDMI or USB-C connection. Please unplug the display cable from your laptop, wait 5 seconds, and plug it back in firmly. Also, check the connection at the back of the monitor."
+        },
+        {
+            "id": "kb6",
+            "category": "Infrastructure",
+            "keywords": [
+                "database",
+                "down",
+                "unresponsive",
+                "outage",
+                "cluster"
+            ],
+            "resolution_steps": "CRITICAL INCIDENT PROTOCOL: Database unresponsiveness requires immediate escalation. Do not attempt manual restarts. Executing the 'Emergency DB Connection Drain' runbook is recommended for Level 3 Engineers."
+        },
+        {
+            "id": "kb7",
+            "category": "Development",
+            "keywords": [
+                "node",
+                "npm",
+                "eacces",
+                "permission",
+                "denied",
+                "install"
+            ],
+            "resolution_steps": "NPM EACCES errors happen when installing global packages without root permissions. Do not use 'sudo'. Instead, configure npm to use a different directory by running: `npm config set prefix '~/.npm-global'`."
+        },
+        {
+            "id": "kb8",
+            "category": "Access",
+            "keywords": [
+                "drive",
+                "shared folder",
+                "marketing",
+                "google workspace",
+                "permission"
+            ],
+            "resolution_steps": "Access to departmental Shared Drives is managed via Google Groups. I can automatically submit an access request to the 'Marketing-All' Google Group owners for you."
+        },
+        {
+            "id": "kb9",
+            "category": "Software",
+            "keywords": [
+                "adobe",
+                "acrobat",
+                "crash",
+                "close",
+                "pdf"
+            ],
+            "resolution_steps": "If Adobe Acrobat is crashing on startup, your user preferences file might be corrupted. Navigate to %APPDATA%\\Adobe\\Acrobat\\ and delete the 'Preferences' folder, then restart the application."
+        },
+        {
+            "id": "kb10",
+            "category": "Hardware",
+            "keywords": [
+                "mouse",
+                "keyboard",
+                "ergonomic",
+                "request",
+                "peripheral"
+            ],
+            "resolution_steps": "Standard peripherals (mice, keyboards, headsets) can be picked up directly from the IT Helpdesk on the 2nd floor between 9 AM and 4 PM. No ticket is required for standard items."
+        }
+    ]
+}
