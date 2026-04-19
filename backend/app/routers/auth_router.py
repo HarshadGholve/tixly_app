@@ -136,7 +136,8 @@ async def google_callback(code: str):
     jwt_token = f"fake-jwt-google-token-for-{user['id']}"
     
     # Redirect back to frontend
-    frontend_login_url = f"http://localhost:5173/login?token={jwt_token}&userId={user['id']}"
+    frontend_url = os.getenv("FRONTEND_URL", "http://localhost:5173")
+    frontend_login_url = f"{frontend_url}/login?token={jwt_token}&userId={user['id']}"
     return RedirectResponse(url=frontend_login_url)
 
 

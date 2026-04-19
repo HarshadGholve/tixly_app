@@ -178,7 +178,10 @@ function Login() {
                 type="button"
                 variant="outline"
                 className="h-11 rounded-xl"
-                onClick={() => window.location.href = "http://localhost:8000/api/auth/google/login"}
+                onClick={() => {
+                  const apiBase = import.meta.env.VITE_API_BASE_URL ? `${import.meta.env.VITE_API_BASE_URL}/api` : "/api";
+                  window.location.href = `${apiBase}/auth/google/login`;
+                }}
               >
                 <span className="font-bold">G</span> Google
               </Button>
