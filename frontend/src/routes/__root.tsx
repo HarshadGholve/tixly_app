@@ -67,7 +67,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
-  const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || "708647111678-i95hm5k9jnalplo7qk63uugn3ufh62h2.apps.googleusercontent.com";
+  const clientId = "708647111678-i95hm5k9jnalplo7qk63uugn3ufh62h2.apps.googleusercontent.com";
   return (
     <GoogleOAuthProvider clientId={clientId}>
       <Outlet />
