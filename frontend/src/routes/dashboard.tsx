@@ -42,6 +42,10 @@ function Dashboard() {
           window.location.replace("/admin");
           return;
         }
+        if (u.role === "Technician") {
+          window.location.replace("/technician/dashboard");
+          return;
+        }
         setUser({ name: u.name, email: u.email });
 
         const s = await fetchApi("/tickets/summary").catch(() => ({ open: 0, inProgress: 0, resolved: 0 }));

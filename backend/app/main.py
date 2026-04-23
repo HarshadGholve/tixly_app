@@ -1,16 +1,13 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-# Import all 6 routers now
-from app.routers import chat_router, ticket_router, auth_router, admin_router, users_router, chats_router
+# Import all routers
+from app.routers import (
+    chat_router, ticket_router, auth_router, admin_router,
+    users_router, chats_router, llm_router, technician_router,
+)
 
-# ====================================================================
-# [30 SECOND SWAP DEMO] — UNCOMMENT THESE LINES TO ENABLE AZURE OPENAI
-# from app.services.kb_service import KnowledgeBaseService, LLMKBProvider
-# KnowledgeBaseService.set_provider(LLMKBProvider())
-# ====================================================================
-
-app = FastAPI(title="AutoFlow IT Automation API", version="1.0.0")
+app = FastAPI(title="AutoFlow IT Automation API", version="2.0.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -27,6 +24,8 @@ app.include_router(chat_router.router, prefix="/api/chat", tags=["Chatbot"])
 app.include_router(chats_router.router, prefix="/api/chats", tags=["Chats"])
 app.include_router(ticket_router.router, prefix="/api/tickets", tags=["Tickets"])
 app.include_router(admin_router.router, prefix="/api/admin", tags=["Admin Portal"])
+app.include_router(llm_router.router, prefix="/api/llm", tags=["LLM Toggle"])
+app.include_router(technician_router.router, prefix="/api/technician", tags=["Technician Portal"])
 
 @app.get("/", tags=["default"])
 async def health_check():

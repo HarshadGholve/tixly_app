@@ -1,9 +1,15 @@
 import { useEffect, useRef, useState, useMemo } from "react";
 import { fetchApi } from "@/lib/api";
-import { useRouter, createFileRoute } from "@tanstack/react-router";
+import { useRouter, createFileRoute, Link } from "@tanstack/react-router";
 import { AppShell } from "@/components/AppShell";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import {
   Bot,
   Send,
@@ -15,6 +21,12 @@ import {
   Sparkles,
   Check,
   Loader2,
+  ToggleLeft,
+  ToggleRight,
+  CheckCircle2,
+  ExternalLink,
+  Zap,
+  User as UserIcon,
 } from "lucide-react";
 
 export const Route = createFileRoute("/chatbot")({
@@ -33,14 +45,23 @@ interface Msg {
   content: string;
   streaming?: boolean;
   chips?: { icon: React.ReactNode; label: string }[];
+  ticketId?: string;
 }
 
 interface Extraction {
   category: string;
   system: string;
-  priority: "Low" | "Medium" | "High" | "Critical";
+  priority: string;
   environment: string;
   ready: boolean;
+}
+
+interface TicketPopup {
+  id: string;
+  subject: string;
+  priority: string;
+  category: string;
+  assignee: string;
 }
 
 const INITIAL_BOT: Msg = {
@@ -83,16 +104,61 @@ function ChatbotPage() {
     ready: false,
   });
 
+  // LLM Toggle state
+  const [llmMode, setLlmMode] = useState<"mock" | "llm">("mock");
+  const [llmToggling, setLlmToggling] = useState(false);
+  const [azureConfigured, setAzureConfigured] = useState(false);
+
+  // Ticket popup state
+  const [ticketPopup, setTicketPopup] = useState<TicketPopup | null>(null);
+
   const scrollRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Fetch LLM status on mount
+  useEffect(() => {
+    fetchApi("/llm/status")
+      .then((res) => {
+        setLlmMode(res.mode);
+        setAzureConfigured(res.azure_configured);
+      })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, [messages]);
 
-  const streamBotReply = (full: string, chips?: { icon: React.ReactNode; label: string }[]) => {
+  const toggleLLM = async () => {
+    setLlmToggling(true);
+    const newMode = llmMode === "mock" ? "llm" : "mock";
+    try {
+      const res = await fetchApi("/llm/toggle", {
+        method: "POST",
+        body: JSON.stringify({ mode: newMode }),
+      });
+      setLlmMode(res.mode);
+    } catch {
+      // Stay on current mode
+    }
+    setLlmToggling(false);
+  };
+
+  const showTicketPopup = (ticket: any) => {
+    setTicketPopup({
+      id: ticket.id,
+      subject: ticket.subject || "IT Support Request",
+      priority: ticket.priority || "P3 - MEDIUM",
+      category: ticket.category || "General",
+      assignee: ticket.assignee?.name || "Unassigned",
+    });
+    // Auto-dismiss after 8 seconds
+    setTimeout(() => setTicketPopup(null), 8000);
+  };
+
+  const streamBotReply = (full: string, chips?: { icon: React.ReactNode; label: string }[], ticketId?: string) => {
     const id = `b-${Date.now()}`;
-    setMessages((m) => [...m, { id, role: "bot", content: "", streaming: true, chips }]);
+    setMessages((m) => [...m, { id, role: "bot", content: "", streaming: true, chips, ticketId }]);
     setIsStreaming(true);
     let i = 0;
     const tick = () => {
@@ -143,7 +209,7 @@ function ChatbotPage() {
         label: s
       }));
 
-      streamBotReply(res.reply, chips);
+      streamBotReply(res.reply, chips, res.ticket_id || undefined);
     } catch (err: any) {
       setIsStreaming(false);
       streamBotReply("Sorry, I encountered an error connecting to the backend. Please try again.");
@@ -170,14 +236,47 @@ function ChatbotPage() {
 
       <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
         <section className="flex h-[calc(100vh-12rem)] flex-col rounded-2xl border border-border/60 bg-card shadow-soft">
-          <div className="flex items-center gap-3 border-b border-border/60 p-4">
-            <div className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-brand text-primary-foreground">
-              <Bot className="h-4 w-4" />
+          {/* Chatbot Header with LLM Toggle */}
+          <div className="flex items-center justify-between border-b border-border/60 p-4">
+            <div className="flex items-center gap-3">
+              <div className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-brand text-primary-foreground">
+                <Bot className="h-4 w-4" />
+              </div>
+              <div>
+                <div className="text-sm font-semibold">Tixly Bot</div>
+                <div className="text-xs text-muted-foreground">Powered by AI Automation</div>
+              </div>
             </div>
-            <div>
-              <div className="text-sm font-semibold">Tixly Bot</div>
-              <div className="text-xs text-muted-foreground">Powered by AI Automation</div>
-            </div>
+            {/* LLM Toggle */}
+            <button
+              onClick={toggleLLM}
+              disabled={llmToggling || !azureConfigured || messages.length > 1}
+              className="inline-flex items-center gap-2 rounded-full border border-border/60 px-3 py-1.5 text-xs font-medium transition-all hover:border-brand-700 disabled:opacity-50"
+              title={
+                !azureConfigured
+                  ? "Azure OpenAI not configured"
+                  : messages.length > 1
+                  ? "Cannot change mode during an active chat"
+                  : `Currently: ${llmMode === "llm" ? "Azure AI" : "Mock KB"}`
+              }
+            >
+              {llmToggling ? (
+                <Loader2 className="h-3.5 w-3.5 animate-spin" />
+              ) : llmMode === "llm" ? (
+                <ToggleRight className="h-4 w-4 text-status-resolved-foreground" />
+              ) : (
+                <ToggleLeft className="h-4 w-4 text-muted-foreground" />
+              )}
+              <span
+                className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
+                  llmMode === "llm"
+                    ? "bg-status-resolved text-status-resolved-foreground"
+                    : "bg-status-warning text-status-warning-foreground"
+                }`}
+              >
+                {llmMode === "llm" ? "Azure AI" : "Mock KB"}
+              </span>
+            </button>
           </div>
 
           <div ref={scrollRef} className="flex-1 space-y-4 overflow-y-auto bg-gradient-to-b from-brand-50 to-card p-5">
@@ -188,10 +287,7 @@ function ChatbotPage() {
             {messages.map((m) =>
               m.role === "bot" ? (
                 <BotMsg key={m.id}>
-                  <p className="whitespace-pre-wrap">
-                    {m.content}
-                    {m.streaming && <span className="ml-0.5 inline-block h-3 w-1.5 animate-pulse bg-brand-700 align-middle" />}
-                  </p>
+                  <BotContent content={m.content} streaming={m.streaming} ticketId={m.ticketId} />
                   {m.chips && (
                     <div className="mt-3 flex flex-wrap gap-2">
                       {m.chips.map((c) => (
@@ -207,6 +303,21 @@ function ChatbotPage() {
                   {m.content}
                 </UserMsg>
               ),
+            )}
+
+            {isStreaming && !messages.some(m => m.streaming) && (
+              <div className="flex items-start gap-2">
+                <div className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-gradient-brand text-primary-foreground">
+                  <Bot className="h-3.5 w-3.5" />
+                </div>
+                <div className="max-w-[85%] rounded-2xl rounded-tl-sm bg-card px-4 py-4 text-sm shadow-soft">
+                  <div className="flex flex-row gap-1.5 items-center h-2">
+                    <span className="w-1.5 h-1.5 bg-brand-700/80 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <span className="w-1.5 h-1.5 bg-brand-700/80 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <span className="w-1.5 h-1.5 bg-brand-700/80 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                  </div>
+                </div>
+              </div>
             )}
           </div>
 
@@ -270,31 +381,33 @@ function ChatbotPage() {
             </p>
 
             <div className="mt-4 space-y-3 text-xs">
-              <ExtractField label="Category" value={extraction.category} pending={!extraction.ready} />
-              <ExtractField label="Impacted System" value={extraction.system} pending={!extraction.ready} />
+              <ExtractField 
+                label="Category" 
+                value={extraction.category} 
+                pending={!extraction.ready} 
+                onChange={(v) => setExtraction({...extraction, category: v})}
+                isSelect
+                options={["Network", "Hardware", "Software", "Access", "Infrastructure", "Development", "Security", "Email", "Cloud", "Onboarding", "General"]}
+              />
+              <ExtractField 
+                label="Impacted System" 
+                value={extraction.system} 
+                pending={!extraction.ready} 
+                onChange={(v) => setExtraction({...extraction, system: v})}
+              />
               <ExtractField
                 label="Priority (auto-assessed)"
-                value={
-                  <span className="inline-flex items-center gap-1.5">
-                    <span className={`h-1.5 w-1.5 rounded-full ${priorityDot(extraction.priority)}`} />
-                    {extraction.priority}
-                  </span>
-                }
+                value={extraction.priority}
                 pending={!extraction.ready}
+                onChange={(v) => setExtraction({...extraction, priority: v})}
+                isSelect
+                options={["P1 - CRITICAL", "P2 - HIGH", "P3 - MEDIUM", "P4 - LOW"]}
               />
               <ExtractField
                 label="Environment"
-                value={
-                  isStreaming ? (
-                    <span className="inline-flex items-center gap-1.5 text-muted-foreground">
-                      <Loader2 className="h-3 w-3 animate-spin" />
-                      Analyzing...
-                    </span>
-                  ) : (
-                    extraction.environment
-                  )
-                }
+                value={isStreaming && !extraction.ready ? "Analyzing..." : extraction.environment}
                 pending={!extraction.ready || isStreaming}
+                onChange={(v) => setExtraction({...extraction, environment: v})}
               />
             </div>
 
@@ -307,27 +420,105 @@ function ChatbotPage() {
                     method: "POST",
                     body: JSON.stringify({ subject: `${extraction.system} Issue`, category: extraction.category })
                   });
-                  router.navigate({ to: `/tickets/${tkt.id}` });
+                  showTicketPopup(tkt);
                 } catch (e: any) { }
               }}
             >
               Create Ticket Now
             </Button>
-            <Button variant="outline" className="mt-2 w-full rounded-xl" onClick={() => send("Escalate to human")}>
-              Escalate to Human
-            </Button>
           </div>
         </aside>
       </div>
+
+      {/* Ticket Created Popup */}
+      <Dialog open={!!ticketPopup} onOpenChange={(open) => !open && setTicketPopup(null)}>
+        <DialogContent className="max-w-sm">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2 text-status-resolved-foreground">
+              <CheckCircle2 className="h-5 w-5" /> Ticket Created!
+            </DialogTitle>
+          </DialogHeader>
+          {ticketPopup && (
+            <div className="space-y-4">
+              <div className="rounded-xl border border-border/60 bg-muted/40 p-4 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-muted-foreground">Ticket ID</span>
+                  <span className="font-mono text-sm font-bold text-brand-700">{ticketPopup.id}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-muted-foreground">Subject</span>
+                  <span className="text-xs font-medium max-w-[180px] truncate">{ticketPopup.subject}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-muted-foreground">Priority</span>
+                  <span className="inline-flex items-center gap-1 text-xs font-semibold">
+                    <span className={`h-1.5 w-1.5 rounded-full ${priorityDotFull(ticketPopup.priority)}`} />
+                    {ticketPopup.priority}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-muted-foreground">Category</span>
+                  <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium">{ticketPopup.category}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-muted-foreground">Assigned To</span>
+                  <span className="inline-flex items-center gap-1 text-xs font-medium">
+                    <UserIcon className="h-3 w-3" /> {ticketPopup.assignee}
+                  </span>
+                </div>
+              </div>
+              <Button
+                className="w-full rounded-xl"
+                onClick={() => {
+                  setTicketPopup(null);
+                  router.navigate({ to: `/tickets/${ticketPopup!.id}` });
+                }}
+              >
+                <ExternalLink className="mr-2 h-3.5 w-3.5" /> View Ticket →
+              </Button>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </AppShell>
   );
 }
 
-function priorityDot(p: Extraction["priority"]) {
-  if (p === "Critical") return "bg-status-critical-foreground";
-  if (p === "High") return "bg-status-warning-foreground";
-  if (p === "Medium") return "bg-status-warning-foreground";
+
+
+function priorityDotFull(p: string) {
+  const up = p.toUpperCase();
+  if (up.includes("CRITICAL")) return "bg-status-critical-foreground";
+  if (up.includes("HIGH")) return "bg-status-warning-foreground";
+  if (up.includes("MEDIUM")) return "bg-brand-700";
   return "bg-status-resolved-foreground";
+}
+
+/** Renders bot message content with clickable ticket links */
+function BotContent({ content, streaming, ticketId }: { content: string; streaming?: boolean; ticketId?: string }) {
+  // Parse ticket links like [View Ticket →](/tickets/TK-1234)
+  const parts = content.split(/(\[View Ticket →\]\(\/tickets\/[A-Z]+-\d+\))/g);
+
+  return (
+    <p className="whitespace-pre-wrap">
+      {parts.map((part, i) => {
+        const linkMatch = part.match(/\[View Ticket →\]\(\/tickets\/(TK-\d+)\)/);
+        if (linkMatch) {
+          return (
+            <Link
+              key={i}
+              to={`/tickets/${linkMatch[1]}`}
+              className="inline-flex items-center gap-1 rounded-md bg-brand-200 px-2 py-0.5 text-xs font-semibold text-brand-800 hover:bg-brand-300 transition-colors"
+            >
+              <ExternalLink className="h-3 w-3" /> View Ticket {linkMatch[1]}
+            </Link>
+          );
+        }
+        return <span key={i}>{part}</span>;
+      })}
+      {streaming && <span className="ml-0.5 inline-block h-3 w-1.5 animate-pulse bg-brand-700 align-middle" />}
+    </p>
+  );
 }
 
 function BotMsg({ children }: { children: React.ReactNode }) {
@@ -376,17 +567,50 @@ function ExtractField({
   label,
   value,
   pending,
+  onChange,
+  isSelect,
+  options,
 }: {
   label: string;
-  value: React.ReactNode;
+  value: any;
   pending?: boolean;
+  onChange?: (val: string) => void;
+  isSelect?: boolean;
+  options?: string[];
 }) {
   return (
     <div>
       <div className="text-[10px] uppercase tracking-wider text-muted-foreground">{label}</div>
-      <div className="mt-1 flex items-center justify-between rounded-lg border border-border/60 bg-muted/40 px-3 py-2 text-xs">
-        <span>{value}</span>
-        {!pending && <Check className="h-3.5 w-3.5 text-status-resolved-foreground" />}
+      <div className={`mt-1 flex items-center justify-between rounded-lg border border-border/60 bg-muted/40 px-3 ${onChange && !pending ? 'py-1' : 'py-2'} text-xs focus-within:border-brand-700 focus-within:ring-1 focus-within:ring-brand-700 transition-all`}>
+        {pending ? (
+          <span className="py-1 text-muted-foreground flex items-center gap-1.5">
+            {value === "Analyzing..." && <Loader2 className="h-3 w-3 animate-spin" />}
+            {value}
+          </span>
+        ) : onChange ? (
+          isSelect ? (
+            <select
+              value={value}
+              onChange={(e) => onChange(e.target.value)}
+              className="w-full bg-transparent outline-none py-1 text-foreground"
+            >
+              {options?.map((o) => (
+                <option key={o} value={o}>
+                  {o}
+                </option>
+              ))}
+            </select>
+          ) : (
+            <input
+              value={value}
+              onChange={(e) => onChange(e.target.value)}
+              className="w-full bg-transparent outline-none py-1 text-foreground"
+              placeholder={`Enter ${label.toLowerCase()}...`}
+            />
+          )
+        ) : (
+          <span className="py-1">{value}</span>
+        )}
       </div>
     </div>
   );

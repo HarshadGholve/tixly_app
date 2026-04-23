@@ -303,42 +303,33 @@ function AllTickets() {
 
       {/* Glassmorphism Edit Modal */}
       <Dialog open={!!editTicket} onOpenChange={(open) => { if (!open) setEditTicket(null); }}>
-        <DialogContent
-          className="sm:max-w-lg border-0 shadow-2xl"
-          style={{
-            background: "rgba(15, 15, 25, 0.75)",
-            backdropFilter: "blur(20px)",
-            WebkitBackdropFilter: "blur(20px)",
-            border: "1px solid rgba(255, 255, 255, 0.12)",
-            boxShadow: "0 8px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08)",
-          }}
-        >
+        <DialogContent className="sm:max-w-lg glass border-white/40 shadow-2xl">
           <DialogHeader>
-            <DialogTitle className="text-white/90">
-              Edit Ticket <span className="font-mono text-brand-400">#{editTicket?.id}</span>
+            <DialogTitle>
+              Edit Ticket <span className="font-mono text-brand-700">#{editTicket?.id}</span>
             </DialogTitle>
           </DialogHeader>
 
           <div className="space-y-4 py-2">
             {/* Subject */}
             <div>
-              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-white/50">
+              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                 Subject
               </label>
               <Input
                 value={editForm.subject}
                 onChange={e => setEditForm(f => ({ ...f, subject: e.target.value }))}
-                className="rounded-xl border-white/10 bg-white/5 text-white placeholder:text-white/30 focus:border-brand-400"
+                className="rounded-xl"
               />
             </div>
 
             {/* Category */}
             <div>
-              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-white/50">
+              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                 Category
               </label>
               <Select value={editForm.category} onValueChange={v => setEditForm(f => ({ ...f, category: v }))}>
-                <SelectTrigger className="rounded-xl border-white/10 bg-white/5 text-white">
+                <SelectTrigger className="rounded-xl">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -352,11 +343,11 @@ function AllTickets() {
             <div className="grid grid-cols-2 gap-4">
               {/* Priority */}
               <div>
-                <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-white/50">
+                <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                   Priority
                 </label>
                 <Select value={editForm.priority} onValueChange={v => setEditForm(f => ({ ...f, priority: v }))}>
-                  <SelectTrigger className="rounded-xl border-white/10 bg-white/5 text-white">
+                  <SelectTrigger className="rounded-xl">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -369,11 +360,11 @@ function AllTickets() {
 
               {/* Status */}
               <div>
-                <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-white/50">
+                <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                   Status
                 </label>
                 <Select value={editForm.status} onValueChange={v => setEditForm(f => ({ ...f, status: v }))}>
-                  <SelectTrigger className="rounded-xl border-white/10 bg-white/5 text-white">
+                  <SelectTrigger className="rounded-xl">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -387,14 +378,14 @@ function AllTickets() {
 
             {/* Assign Technician */}
             <div>
-              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-white/50">
+              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                 Assign Technician
               </label>
               <Select
                 value={editForm.assignee_id}
                 onValueChange={v => setEditForm(f => ({ ...f, assignee_id: v }))}
               >
-                <SelectTrigger className="rounded-xl border-white/10 bg-white/5 text-white">
+                <SelectTrigger className="rounded-xl">
                   <SelectValue placeholder="Select technician..." />
                 </SelectTrigger>
                 <SelectContent>
@@ -413,14 +404,14 @@ function AllTickets() {
             <Button
               variant="outline"
               onClick={() => setEditTicket(null)}
-              className="rounded-xl border-white/10 bg-white/5 text-white hover:bg-white/10"
+              className="rounded-xl"
             >
               Cancel
             </Button>
             <Button
               onClick={handleEditSave}
               disabled={editSaving}
-              className="rounded-xl"
+              className="rounded-xl shadow-md"
             >
               {editSaving ? "Saving..." : "Save Changes"}
             </Button>

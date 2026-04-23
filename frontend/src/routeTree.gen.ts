@@ -18,6 +18,9 @@ import { Route as ChatbotRouteImport } from './routes/chatbot'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as TicketsTicketIdRouteImport } from './routes/tickets.$ticketId'
+import { Route as TechnicianTicketsRouteImport } from './routes/technician.tickets'
+import { Route as TechnicianDashboardRouteImport } from './routes/technician.dashboard'
+import { Route as AdminUsersRouteImport } from './routes/admin.users'
 import { Route as AdminTicketsRouteImport } from './routes/admin.tickets'
 import { Route as AdminTicketsTicketIdRouteImport } from './routes/admin.tickets.$ticketId'
 
@@ -66,6 +69,21 @@ const TicketsTicketIdRoute = TicketsTicketIdRouteImport.update({
   path: '/$ticketId',
   getParentRoute: () => TicketsRoute,
 } as any)
+const TechnicianTicketsRoute = TechnicianTicketsRouteImport.update({
+  id: '/technician/tickets',
+  path: '/technician/tickets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TechnicianDashboardRoute = TechnicianDashboardRouteImport.update({
+  id: '/technician/dashboard',
+  path: '/technician/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminUsersRoute = AdminUsersRouteImport.update({
+  id: '/admin/users',
+  path: '/admin/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminTicketsRoute = AdminTicketsRouteImport.update({
   id: '/admin/tickets',
   path: '/admin/tickets',
@@ -86,6 +104,9 @@ export interface FileRoutesByFullPath {
   '/signup': typeof SignupRoute
   '/tickets': typeof TicketsRouteWithChildren
   '/admin/tickets': typeof AdminTicketsRouteWithChildren
+  '/admin/users': typeof AdminUsersRoute
+  '/technician/dashboard': typeof TechnicianDashboardRoute
+  '/technician/tickets': typeof TechnicianTicketsRoute
   '/tickets/$ticketId': typeof TicketsTicketIdRoute
   '/admin/': typeof AdminIndexRoute
   '/admin/tickets/$ticketId': typeof AdminTicketsTicketIdRoute
@@ -99,6 +120,9 @@ export interface FileRoutesByTo {
   '/signup': typeof SignupRoute
   '/tickets': typeof TicketsRouteWithChildren
   '/admin/tickets': typeof AdminTicketsRouteWithChildren
+  '/admin/users': typeof AdminUsersRoute
+  '/technician/dashboard': typeof TechnicianDashboardRoute
+  '/technician/tickets': typeof TechnicianTicketsRoute
   '/tickets/$ticketId': typeof TicketsTicketIdRoute
   '/admin': typeof AdminIndexRoute
   '/admin/tickets/$ticketId': typeof AdminTicketsTicketIdRoute
@@ -113,6 +137,9 @@ export interface FileRoutesById {
   '/signup': typeof SignupRoute
   '/tickets': typeof TicketsRouteWithChildren
   '/admin/tickets': typeof AdminTicketsRouteWithChildren
+  '/admin/users': typeof AdminUsersRoute
+  '/technician/dashboard': typeof TechnicianDashboardRoute
+  '/technician/tickets': typeof TechnicianTicketsRoute
   '/tickets/$ticketId': typeof TicketsTicketIdRoute
   '/admin/': typeof AdminIndexRoute
   '/admin/tickets/$ticketId': typeof AdminTicketsTicketIdRoute
@@ -128,6 +155,9 @@ export interface FileRouteTypes {
     | '/signup'
     | '/tickets'
     | '/admin/tickets'
+    | '/admin/users'
+    | '/technician/dashboard'
+    | '/technician/tickets'
     | '/tickets/$ticketId'
     | '/admin/'
     | '/admin/tickets/$ticketId'
@@ -141,6 +171,9 @@ export interface FileRouteTypes {
     | '/signup'
     | '/tickets'
     | '/admin/tickets'
+    | '/admin/users'
+    | '/technician/dashboard'
+    | '/technician/tickets'
     | '/tickets/$ticketId'
     | '/admin'
     | '/admin/tickets/$ticketId'
@@ -154,6 +187,9 @@ export interface FileRouteTypes {
     | '/signup'
     | '/tickets'
     | '/admin/tickets'
+    | '/admin/users'
+    | '/technician/dashboard'
+    | '/technician/tickets'
     | '/tickets/$ticketId'
     | '/admin/'
     | '/admin/tickets/$ticketId'
@@ -168,6 +204,9 @@ export interface RootRouteChildren {
   SignupRoute: typeof SignupRoute
   TicketsRoute: typeof TicketsRouteWithChildren
   AdminTicketsRoute: typeof AdminTicketsRouteWithChildren
+  AdminUsersRoute: typeof AdminUsersRoute
+  TechnicianDashboardRoute: typeof TechnicianDashboardRoute
+  TechnicianTicketsRoute: typeof TechnicianTicketsRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
@@ -236,6 +275,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TicketsTicketIdRouteImport
       parentRoute: typeof TicketsRoute
     }
+    '/technician/tickets': {
+      id: '/technician/tickets'
+      path: '/technician/tickets'
+      fullPath: '/technician/tickets'
+      preLoaderRoute: typeof TechnicianTicketsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/technician/dashboard': {
+      id: '/technician/dashboard'
+      path: '/technician/dashboard'
+      fullPath: '/technician/dashboard'
+      preLoaderRoute: typeof TechnicianDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/users': {
+      id: '/admin/users'
+      path: '/admin/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AdminUsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/tickets': {
       id: '/admin/tickets'
       path: '/admin/tickets'
@@ -285,6 +345,9 @@ const rootRouteChildren: RootRouteChildren = {
   SignupRoute: SignupRoute,
   TicketsRoute: TicketsRouteWithChildren,
   AdminTicketsRoute: AdminTicketsRouteWithChildren,
+  AdminUsersRoute: AdminUsersRoute,
+  TechnicianDashboardRoute: TechnicianDashboardRoute,
+  TechnicianTicketsRoute: TechnicianTicketsRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
 export const routeTree = rootRouteImport

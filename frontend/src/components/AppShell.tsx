@@ -3,7 +3,7 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "./AppSidebar";
 
 interface AppShellProps {
-  variant: "user" | "admin";
+  variant: "user" | "admin" | "technician";
   user: { name: string; subtitle: string };
   children: ReactNode;
 }

@@ -16,8 +16,13 @@ INITIAL_DB = {
         {"id": "u2", "name": "David Kim", "email": "david.k@company.com", "role": "User", "password": "password123"},
         {"id": "u3", "name": "Stefanie Corn", "email": "s.corn@company.com", "role": "User", "password": "password123"},
         {"id": "a1", "name": "Alex System", "email": "alex.s@company.com", "role": "Admin", "password": "password123"},
-        {"id": "a2", "name": "Marcus Chen", "email": "m.chen@company.com", "role": "Technician", "password": "password123"},
-        {"id": "a3", "name": "Sarah Jenkins", "email": "sarah.j@company.com", "role": "Admin", "password": "password123"}
+        {"id": "a2", "name": "Marcus Chen", "email": "m.chen@company.com", "role": "Technician", "password": "password123",
+         "skills": ["Network", "Infrastructure", "Hardware"]},
+        {"id": "a3", "name": "Sarah Jenkins", "email": "sarah.j@company.com", "role": "Admin", "password": "password123"},
+        {"id": "t1", "name": "Priya Sharma", "email": "priya.s@company.com", "role": "Technician", "password": "password123",
+         "skills": ["Software", "Development", "Access"]},
+        {"id": "t2", "name": "James Wilson", "email": "james.w@company.com", "role": "Technician", "password": "password123",
+         "skills": ["Hardware", "Infrastructure", "Security"]},
     ],
     
     "tickets": [
@@ -25,60 +30,80 @@ INITIAL_DB = {
             "id": "TK-9741", "user_id": "u3", 
             "subject": "Database Server Unresponsive - Production Cluster", 
             "category": "Infrastructure", "status": "In Progress", "priority": "P1 - CRITICAL", 
+            "assignee_id": "a2",
+            "assignee": {"id": "a2", "name": "Marcus Chen", "email": "m.chen@company.com", "role": "Technician"},
             "created_at": get_past_time(minutes_ago=45)
         },
         {
             "id": "TK-9740", "user_id": "u2", 
             "subject": "VPN Access Failed - London Office", 
             "category": "Network", "status": "Open", "priority": "P2 - HIGH", 
+            "assignee_id": "a2",
+            "assignee": {"id": "a2", "name": "Marcus Chen", "email": "m.chen@company.com", "role": "Technician"},
             "created_at": get_past_time(minutes_ago=120)
         },
         {
             "id": "TK-8939", "user_id": "u1", 
             "subject": "Laptop screen flickering in conference room B", 
             "category": "Hardware", "status": "Open", "priority": "P2 - HIGH", 
+            "assignee_id": "t2",
+            "assignee": {"id": "t2", "name": "James Wilson", "email": "james.w@company.com", "role": "Technician"},
             "created_at": get_past_time(minutes_ago=10)
         },
         {
             "id": "TK-8938", "user_id": "u1", 
             "subject": "Software installation request: Figma", 
             "category": "Software", "status": "In Progress", "priority": "P3 - MEDIUM", 
+            "assignee_id": "t1",
+            "assignee": {"id": "t1", "name": "Priya Sharma", "email": "priya.s@company.com", "role": "Technician"},
             "created_at": get_past_time(hours_ago=2)
         },
         {
             "id": "TK-8944", "user_id": "u1", 
             "subject": "Node.js npm install giving EACCES permission errors", 
             "category": "Development", "status": "Open", "priority": "P3 - MEDIUM", 
+            "assignee_id": "t1",
+            "assignee": {"id": "t1", "name": "Priya Sharma", "email": "priya.s@company.com", "role": "Technician"},
             "created_at": get_past_time(minutes_ago=5)
         },
         {
             "id": "TK-8912", "user_id": "u2", 
             "subject": "Printer on 3rd floor offline", 
             "category": "Hardware", "status": "Open", "priority": "P4 - LOW", 
+            "assignee_id": "t2",
+            "assignee": {"id": "t2", "name": "James Wilson", "email": "james.w@company.com", "role": "Technician"},
             "created_at": get_past_time(days_ago=1)
         },
         {
             "id": "TK-8890", "user_id": "u2", 
             "subject": "Password reset for email", 
             "category": "Access", "status": "Resolved", "priority": "P4 - LOW", 
+            "assignee_id": "t1",
+            "assignee": {"id": "t1", "name": "Priya Sharma", "email": "priya.s@company.com", "role": "Technician"},
             "created_at": get_past_time(days_ago=3)
         },
         {
             "id": "TK-8945", "user_id": "u3", 
             "subject": "Adobe Acrobat keeps crashing on startup", 
             "category": "Software", "status": "Open", "priority": "P4 - LOW", 
+            "assignee_id": "t1",
+            "assignee": {"id": "t1", "name": "Priya Sharma", "email": "priya.s@company.com", "role": "Technician"},
             "created_at": get_past_time(hours_ago=5)
         },
         {
             "id": "TK-8946", "user_id": "u1", 
             "subject": "Requesting an ergonomic wireless mouse", 
             "category": "Hardware", "status": "Resolved", "priority": "P4 - LOW", 
+            "assignee_id": "t2",
+            "assignee": {"id": "t2", "name": "James Wilson", "email": "james.w@company.com", "role": "Technician"},
             "created_at": get_past_time(days_ago=5)
         },
         {
             "id": "TK-8947", "user_id": "u2", 
             "subject": "Cannot access shared Marketing Drive (Google Workspace)", 
             "category": "Access", "status": "In Progress", "priority": "P3 - MEDIUM", 
+            "assignee_id": "t1",
+            "assignee": {"id": "t1", "name": "Priya Sharma", "email": "priya.s@company.com", "role": "Technician"},
             "created_at": get_past_time(hours_ago=1)
         }
     ],
@@ -100,3 +125,10 @@ else:
 def save_db():
     with open(DB_FILE_PATH, 'w') as f:
         json.dump(db, f, indent=4)
+
+def reset_db():
+    """Reset the database to initial state. Useful for testing."""
+    global db
+    db = INITIAL_DB
+    save_db()
+    return db

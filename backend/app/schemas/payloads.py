@@ -1,7 +1,7 @@
 from pydantic import BaseModel, EmailStr
 from typing import Optional, List, Dict, Any
 
-# --- NEW AUTHENTICATION SCHEMAS ---
+# --- AUTHENTICATION SCHEMAS ---
 class UserRegisterRequest(BaseModel):
     full_name: str
     organization: str
@@ -18,7 +18,7 @@ class GoogleAuthRequest(BaseModel):
 class ForgotPasswordRequest(BaseModel):
     email: EmailStr
 
-# ... (Keep your existing ChatMessageRequest and TicketCreateRequest below here) ...
+# --- CHAT SCHEMAS ---
 class ChatMessageRequest(BaseModel):
     message: str
     chat_id: Optional[str] = None
@@ -31,10 +31,17 @@ class ChatMessageResponse(BaseModel):
     failed_attempts: int
     extracted_info: Optional[Dict[str, str]] = None
     suggestions: Optional[List[str]] = []
+    ticket_id: Optional[str] = None  # For ticket popup redirect
 
+class ChatSearchRequest(BaseModel):
+    query: str
+    chat_id: Optional[str] = None
+
+# --- TICKET SCHEMAS ---
 class TicketCreateRequest(BaseModel):
     subject: str
     category: Optional[str] = "General"
+    description: Optional[str] = ""
 
 class TicketResponse(BaseModel):
     id: str
@@ -42,9 +49,16 @@ class TicketResponse(BaseModel):
     subject: str
     category: str
     status: str
+    priority: Optional[str] = "P3 - MEDIUM"
+    assignee_id: Optional[str] = None
+    assignee: Optional[Dict[str, str]] = None
     created_at: str
 
-# --- NEW SCHEMAS FOR ADDED APIs ---
+class TicketReplyRequest(BaseModel):
+    message: str
+    attachments: Optional[List[str]] = []
+
+# --- USER / PROFILE SCHEMAS ---
 class UpdateProfileRequest(BaseModel):
     first_name: Optional[str] = None
     last_name: Optional[str] = None
@@ -56,14 +70,7 @@ class RequestElevationRequest(BaseModel):
     requested_role: str
     reason: str
 
-class ChatSearchRequest(BaseModel):
-    query: str
-    chat_id: Optional[str] = None
-
-class TicketReplyRequest(BaseModel):
-    message: str
-    attachments: Optional[List[str]] = []
-
+# --- ADMIN SCHEMAS ---
 class AdminBulkUpdateRequest(BaseModel):
     ticket_ids: List[str]
     action: str
@@ -105,3 +112,26 @@ class CreateKBEntryRequest(BaseModel):
     content: str
     tags: Optional[List[str]] = []
     script: Optional[str] = None
+
+# --- LLM TOGGLE ---
+class LLMToggleRequest(BaseModel):
+    mode: str  # "mock" or "llm"
+
+# --- ADMIN USER MANAGEMENT ---
+class CreateUserRequest(BaseModel):
+    name: str
+    email: EmailStr
+    role: str  # "User", "Technician", "Admin"
+    password: Optional[str] = "password123"
+    skills: Optional[List[str]] = []
+
+class UpdateUserRequest(BaseModel):
+    name: Optional[str] = None
+    email: Optional[EmailStr] = None
+    role: Optional[str] = None
+    skills: Optional[List[str]] = None
+
+# --- TECHNICIAN SCHEMAS ---
+class TechnicianTicketUpdateRequest(BaseModel):
+    status: Optional[str] = None
+    notes: Optional[str] = None

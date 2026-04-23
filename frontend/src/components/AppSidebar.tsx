@@ -7,6 +7,9 @@ import {
   LayoutDashboard,
   ListChecks,
   ChevronUp,
+  Users,
+  Wrench,
+  Inbox,
 } from "lucide-react";
 import {
   Sidebar,
@@ -41,11 +44,18 @@ const userNav = [
 const adminNav = [
   { title: "Admin Dashboard", url: "/admin", icon: LayoutDashboard },
   { title: "All Tickets", url: "/admin/tickets", icon: ListChecks },
+  { title: "User Management", url: "/admin/users", icon: Users },
+  { title: "Profile & Settings", url: "/settings", icon: Settings },
+];
+
+const technicianNav = [
+  { title: "Technician Dashboard", url: "/technician/dashboard", icon: Wrench },
+  { title: "My Assigned Tickets", url: "/technician/tickets", icon: Inbox },
   { title: "Profile & Settings", url: "/settings", icon: Settings },
 ];
 
 interface AppSidebarProps {
-  variant: "user" | "admin";
+  variant: "user" | "admin" | "technician";
   user: { name: string; subtitle: string };
 }
 
@@ -64,6 +74,20 @@ export function AppSidebar({ variant, user }: AppSidebarProps) {
   const isActive = (url: string) =>
     url === "/admin" ? path === "/admin" : path === url || path.startsWith(url + "/");
 
+  const nav =
+    variant === "admin"
+      ? adminNav
+      : variant === "technician"
+        ? technicianNav
+        : userNav;
+
+  const groupLabel =
+    variant === "admin"
+      ? "Administration"
+      : variant === "technician"
+        ? "Technician Portal"
+        : undefined;
+
   return (
     <Sidebar collapsible="icon" className="border-r border-sidebar-border">
       <SidebarHeader className="px-4 py-5">
@@ -77,52 +101,27 @@ export function AppSidebar({ variant, user }: AppSidebarProps) {
       </SidebarHeader>
 
       <SidebarContent className="px-2">
-        {variant === "user" && (
-          <SidebarGroup>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {userNav.map((item) => (
-                  <SidebarMenuItem key={item.url}>
-                    <SidebarMenuButton
-                      asChild
-                      isActive={isActive(item.url)}
-                      className="data-[active=true]:bg-brand-200/70 data-[active=true]:text-brand-700 data-[active=true]:font-semibold"
-                    >
-                      <Link to={item.url}>
-                        <item.icon className="h-4 w-4" />
-                        <span>{item.title}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        )}
-
-        {variant === "admin" && (
-          <SidebarGroup>
-            <SidebarGroupLabel>Administration</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {adminNav.map((item) => (
-                    <SidebarMenuItem key={item.url}>
-                      <SidebarMenuButton
-                        asChild
-                        isActive={isActive(item.url)}
-                        className="data-[active=true]:bg-brand-200/70 data-[active=true]:text-brand-700 data-[active=true]:font-semibold"
-                      >
-                        <Link to={item.url}>
-                          <item.icon className="h-4 w-4" />
-                          <span>{item.title}</span>
-                        </Link>
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        )}
+        <SidebarGroup>
+          {groupLabel && <SidebarGroupLabel>{groupLabel}</SidebarGroupLabel>}
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {nav.map((item) => (
+                <SidebarMenuItem key={item.url}>
+                  <SidebarMenuButton
+                    asChild
+                    isActive={isActive(item.url)}
+                    className="data-[active=true]:bg-brand-200/70 data-[active=true]:text-brand-700 data-[active=true]:font-semibold"
+                  >
+                    <Link to={item.url}>
+                      <item.icon className="h-4 w-4" />
+                      <span>{item.title}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
       </SidebarContent>
 
       <SidebarFooter className="border-t border-sidebar-border p-3">

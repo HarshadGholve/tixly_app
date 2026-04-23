@@ -63,8 +63,8 @@ function SettingsPage() {
     );
   }
 
-  // Adjust appshell layout internally if they navigate here from admin
-  const isCurrentlyAdmin = user.role === "Admin" || user.role === "Technician";
+  // Adjust appshell layout internally based on role
+  const sidebarVariant: "user" | "admin" | "technician" = user.role === "Admin" ? "admin" : user.role === "Technician" ? "technician" : "user";
 
   const onPickAvatar = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -110,7 +110,7 @@ function SettingsPage() {
   };
 
   return (
-    <AppShell variant={isCurrentlyAdmin ? "admin" : "user"} user={{ name: user.name, subtitle: user.email }}>
+    <AppShell variant={sidebarVariant} user={{ name: user.name, subtitle: user.email }}>
       <div className="mb-6">
         <h1 className="text-3xl font-bold tracking-tight">Profile & Settings</h1>
         <p className="text-sm text-muted-foreground">Manage your personal information, security, and access level.</p>

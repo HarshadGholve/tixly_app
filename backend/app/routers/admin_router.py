@@ -1,10 +1,11 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Header
 from typing import Dict, Any, List
 from app.data.mock_db import db, save_db
 from app.schemas.payloads import (
     AdminBulkUpdateRequest, AdminUpdateTicketRequest, AdminNoteRequest,
     UpdateAutomationsRequest, TestAutoRuleRequest, ExecuteRunbookRequest,
-    InviteUserRequest, UpdatePermissionsRequest, CreateKBEntryRequest
+    InviteUserRequest, UpdatePermissionsRequest, CreateKBEntryRequest,
+    CreateUserRequest, UpdateUserRequest,
 )
 from datetime import datetime
 import uuid
@@ -128,17 +129,70 @@ async def get_backlog_breakdown():
         "avgAge": "3.5 days"
     }
 
-# --- ADMIN USERS & ROLES APIs ---
+# --- ADMIN USER MANAGEMENT APIs ---
 @router.get("/users")
 async def get_all_users():
     """List all users for Role Management"""
-    return {"users": db["users"]}
+    users = [{k: v for k, v in u.items() if k != "password"} for u in db["users"]]
+    return {"users": users}
 
 @router.get("/technicians")
 async def get_technicians():
     """List only Technician-role users for assignment dropdown"""
     technicians = [u for u in db["users"] if u.get("role") == "Technician"]
     return {"technicians": technicians}
+
+@router.post("/users", status_code=201)
+async def create_user(payload: CreateUserRequest):
+    """Create a new user (Admin can create Users, Technicians, or Admins)"""
+    # Check for duplicate email
+    existing = next((u for u in db["users"] if u["email"] == payload.email), None)
+    if existing:
+        raise HTTPException(status_code=400, detail="A user with this email already exists.")
+
+    new_user = {
+        "id": f"u-{str(uuid.uuid4())[:8]}",
+        "name": payload.name,
+        "email": payload.email,
+        "role": payload.role,
+        "password": payload.password or "password123",
+    }
+    # Add skills for technicians
+    if payload.role == "Technician" and payload.skills:
+        new_user["skills"] = payload.skills
+
+    db["users"].append(new_user)
+    save_db()
+    return {
+        "success": True,
+        "user": {k: v for k, v in new_user.items() if k != "password"},
+    }
+
+@router.patch("/users/{user_id}")
+async def update_user(user_id: str, payload: UpdateUserRequest):
+    """Update a user's name, email, role, and/or skills"""
+    for u in db["users"]:
+        if u["id"] == user_id:
+            if payload.name is not None:
+                u["name"] = payload.name
+            if payload.email is not None:
+                # Check email uniqueness
+                conflict = next(
+                    (x for x in db["users"] if x["email"] == payload.email and x["id"] != user_id),
+                    None,
+                )
+                if conflict:
+                    raise HTTPException(status_code=400, detail="Email already in use by another user.")
+                u["email"] = payload.email
+            if payload.role is not None:
+                u["role"] = payload.role
+            if payload.skills is not None:
+                u["skills"] = payload.skills
+
+            save_db()
+            return {"success": True, "user": {k: v for k, v in u.items() if k != "password"}}
+
+    raise HTTPException(status_code=404, detail="User not found")
 
 @router.patch("/users/{user_id}/role")
 async def update_user_role(user_id: str, new_role: str):
@@ -149,6 +203,36 @@ async def update_user_role(user_id: str, new_role: str):
             save_db()
             return {"success": True, "user": u}
     return {"error": "User not found"}
+
+@router.delete("/users/{user_id}")
+async def delete_user(
+    user_id: str,
+    current_user_id: str = Header(default="a1", alias="x-user-id"),
+):
+    """Delete a user. Guards: cannot delete self, cannot delete last admin."""
+    if user_id == current_user_id:
+        raise HTTPException(status_code=400, detail="You cannot delete your own account.")
+
+    target = next((u for u in db["users"] if u["id"] == user_id), None)
+    if not target:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    # Guard: cannot delete last admin
+    if target.get("role") == "Admin":
+        admin_count = len([u for u in db["users"] if u.get("role") == "Admin"])
+        if admin_count <= 1:
+            raise HTTPException(status_code=400, detail="Cannot delete the last admin user.")
+
+    db["users"] = [u for u in db["users"] if u["id"] != user_id]
+
+    # Unassign any tickets that were assigned to this user
+    for t in db["tickets"]:
+        if t.get("assignee_id") == user_id:
+            t.pop("assignee_id", None)
+            t.pop("assignee", None)
+
+    save_db()
+    return {"success": True, "deletedUserId": user_id}
 
 @router.post("/users/invite")
 async def invite_user(payload: InviteUserRequest):

@@ -33,7 +33,12 @@
             "name": "Marcus Chen",
             "email": "m.chen@company.com",
             "role": "Technician",
-            "password": "password123"
+            "password": "password123",
+            "skills": [
+                "Network",
+                "Infrastructure",
+                "Hardware"
+            ]
         },
         {
             "id": "a3",
@@ -43,21 +48,244 @@
             "password": "password123"
         },
         {
-            "id": "u-e0f9c0d0",
+            "id": "t1",
+            "name": "Priya Sharma",
+            "email": "priya.s@company.com",
+            "role": "Technician",
+            "password": "password123",
+            "skills": [
+                "Software",
+                "Development",
+                "Access"
+            ]
+        },
+        {
+            "id": "t2",
+            "name": "James Wilson",
+            "email": "james.w@company.com",
+            "role": "Technician",
+            "password": "password123",
+            "skills": [
+                "Hardware",
+                "Infrastructure",
+                "Security"
+            ]
+        },
+        {
+            "id": "u-65e0d9bf",
             "name": "Harshad Gholve",
             "email": "harshad.gholve123@gmail.com",
             "role": "User"
+        },
+        {
+            "id": "u-1ce5bc7c",
+            "name": "harshad",
+            "email": "harshad@gmail.com",
+            "role": "User",
+            "password": "password123"
         }
     ],
     "tickets": [
         {
+            "id": "TK-9741",
+            "user_id": "u3",
+            "subject": "Database Server Unresponsive - Production Cluster",
+            "category": "Infrastructure",
+            "status": "In Progress",
+            "priority": "P1 - CRITICAL",
+            "assignee_id": "a2",
+            "assignee": {
+                "id": "a2",
+                "name": "Marcus Chen",
+                "email": "m.chen@company.com",
+                "role": "Technician"
+            },
+            "created_at": "2026-04-23T16:27:29.265013"
+        },
+        {
             "id": "TK-9740",
             "user_id": "u2",
             "subject": "VPN Access Failed - London Office",
+            "category": "Network",
+            "status": "Resolved",
+            "priority": "P2 - HIGH",
+            "assignee_id": "a2",
+            "assignee": {
+                "id": "a2",
+                "name": "Marcus Chen",
+                "email": "m.chen@company.com",
+                "role": "Technician"
+            },
+            "created_at": "2026-04-23T15:12:29.265034",
+            "updated_at": "2026-04-23T20:37:32.559228"
+        },
+        {
+            "id": "TK-8939",
+            "user_id": "u1",
+            "subject": "Laptop screen flickering in conference room B",
+            "category": "Hardware",
+            "status": "Open",
+            "priority": "P2 - HIGH",
+            "assignee_id": "t2",
+            "assignee": {
+                "id": "t2",
+                "name": "James Wilson",
+                "email": "james.w@company.com",
+                "role": "Technician"
+            },
+            "created_at": "2026-04-23T17:02:29.265037"
+        },
+        {
+            "id": "TK-8938",
+            "user_id": "u1",
+            "subject": "Software installation request: Figma",
             "category": "Software",
             "status": "In Progress",
             "priority": "P3 - MEDIUM",
-            "created_at": "2026-04-18T18:59:27.539770",
+            "assignee_id": "t1",
+            "assignee": {
+                "id": "t1",
+                "name": "Priya Sharma",
+                "email": "priya.s@company.com",
+                "role": "Technician"
+            },
+            "created_at": "2026-04-23T15:12:29.265040"
+        },
+        {
+            "id": "TK-8944",
+            "user_id": "u1",
+            "subject": "Node.js npm install giving EACCES permission errors",
+            "category": "Development",
+            "status": "Open",
+            "priority": "P3 - MEDIUM",
+            "assignee_id": "t1",
+            "assignee": {
+                "id": "t1",
+                "name": "Priya Sharma",
+                "email": "priya.s@company.com",
+                "role": "Technician"
+            },
+            "created_at": "2026-04-23T17:07:29.265043"
+        },
+        {
+            "id": "TK-8912",
+            "user_id": "u2",
+            "subject": "Printer on 3rd floor offline",
+            "category": "Hardware",
+            "status": "Open",
+            "priority": "P4 - LOW",
+            "assignee_id": "t2",
+            "assignee": {
+                "id": "t2",
+                "name": "James Wilson",
+                "email": "james.w@company.com",
+                "role": "Technician"
+            },
+            "created_at": "2026-04-22T17:12:29.265046"
+        },
+        {
+            "id": "TK-8890",
+            "user_id": "u2",
+            "subject": "Password reset for email",
+            "category": "Access",
+            "status": "Resolved",
+            "priority": "P4 - LOW",
+            "assignee_id": "t1",
+            "assignee": {
+                "id": "t1",
+                "name": "Priya Sharma",
+                "email": "priya.s@company.com",
+                "role": "Technician"
+            },
+            "created_at": "2026-04-20T17:12:29.265048"
+        },
+        {
+            "id": "TK-8945",
+            "user_id": "u3",
+            "subject": "Adobe Acrobat keeps crashing on startup",
+            "category": "Software",
+            "status": "Open",
+            "priority": "P4 - LOW",
+            "assignee_id": "t1",
+            "assignee": {
+                "id": "t1",
+                "name": "Priya Sharma",
+                "email": "priya.s@company.com",
+                "role": "Technician"
+            },
+            "created_at": "2026-04-23T12:12:29.265051"
+        },
+        {
+            "id": "TK-8946",
+            "user_id": "u1",
+            "subject": "Requesting an ergonomic wireless mouse",
+            "category": "Hardware",
+            "status": "Resolved",
+            "priority": "P4 - LOW",
+            "assignee_id": "t2",
+            "assignee": {
+                "id": "t2",
+                "name": "James Wilson",
+                "email": "james.w@company.com",
+                "role": "Technician"
+            },
+            "created_at": "2026-04-18T17:12:29.265054"
+        },
+        {
+            "id": "TK-8947",
+            "user_id": "u2",
+            "subject": "Cannot access shared Marketing Drive (Google Workspace)",
+            "category": "Access",
+            "status": "In Progress",
+            "priority": "P3 - MEDIUM",
+            "assignee_id": "t1",
+            "assignee": {
+                "id": "t1",
+                "name": "Priya Sharma",
+                "email": "priya.s@company.com",
+                "role": "Technician"
+            },
+            "created_at": "2026-04-23T16:12:29.265057"
+        },
+        {
+            "id": "TK-5856",
+            "user_id": "u-65e0d9bf",
+            "subject": "Assistance needed for unresolved printer setup issue",
+            "category": "Hardware",
+            "status": "Open",
+            "priority": "P4 - LOW",
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Printer setup"
+                },
+                {
+                    "role": "bot",
+                    "content": "Got it \u2014 I can help you set up a printer. I just need a bit more detail first.\n\nWhich of these applies to you?\n\u2022 You want to add an office printer to your computer  \n\u2022 You\u2019re setting up a new workstation and need to reconnect to an existing printer  \n\u2022 You have a personal/home printer you\u2019re trying to use for work  \n\u2022 The printer is showing as offline or not printing\n\nIf you just need the standard office printer setup, here are the steps:\n\nWindows:\n1. Open Settings \u2192 Devices \u2192 Printers & scanners.  \n2. Click Add a printer or scanner.  \n3. Wait for the list to populate and select the printer with the correct floor/room label.  \n4. If it doesn\u2019t appear, choose Add manually \u2192 Add a printer using TCP/IP \u2192 enter the printer\u2019s IP (usually printed on a label on the printer).  \n5. Test print a page.\n\nMac:\n1. Open System Settings \u2192 Printers & Scanners.  \n2. Click Add Printer (+).  \n3. Select the printer that appears in the list.  \n4. If not visible, choose IP \u2192 enter the printer\u2019s IP address \u2192 Protocol: IPP or HP JetDirect depending on model.  \n5. Add and print a test page.\n\nIf the printer shows as offline:\n1. Check the printer for paper jams or no paper.  \n2. Press and hold the WiFi button on the printer for 3 seconds to reconnect it to the Corp-Devices network.  \n3. Remove the printer from your computer and re-add it.\n\nTell me which printer model or location you\u2019re trying to set up and I can walk you through the exact steps.\n\nDid this resolve your issue? (Yes/No)"
+                },
+                {
+                    "role": "user",
+                    "content": "No"
+                },
+                {
+                    "role": "bot",
+                    "content": "I'm sorry that didn't work. Could you provide a bit more detail about the error?"
+                },
+                {
+                    "role": "user",
+                    "content": "No"
+                },
+                {
+                    "role": "bot",
+                    "content": "I apologize, but I am unable to resolve this. I have escalated this to our human IT team.\n\n\ud83d\udccb **Ticket Created: TK-5856**\n\u2022 Priority: P4 - LOW\n\u2022 Category: Hardware\n\u2022 Assigned to: Marcus Chen\n\n[View Ticket \u2192](/tickets/TK-5856)"
+                }
+            ],
+            "created_at": "2026-04-23T19:38:20.740142",
+            "updated_at": "2026-04-23T19:38:20.740156",
+            "llm_analysis": {
+                "sentiment": "neutral",
+                "urgency_score": 3
+            },
             "assignee_id": "a2",
             "assignee": {
                 "id": "a2",
@@ -67,207 +295,12 @@
             }
         },
         {
-            "id": "TK-8939",
-            "user_id": "u1",
-            "subject": "Laptop screen flickering in conference room B",
-            "category": "Hardware",
-            "status": "Open",
-            "priority": "P2 - HIGH",
-            "created_at": "2026-04-18T20:49:27.539771"
-        },
-        {
-            "id": "TK-8938",
-            "user_id": "u1",
-            "subject": "Software installation request: Figma",
-            "category": "Software",
-            "status": "In Progress",
-            "priority": "P3 - MEDIUM",
-            "created_at": "2026-04-18T18:59:27.539773"
-        },
-        {
-            "id": "TK-8944",
-            "user_id": "u1",
-            "subject": "Node.js npm install giving EACCES permission errors",
-            "category": "Development",
-            "status": "Open",
-            "priority": "P3 - MEDIUM",
-            "created_at": "2026-04-18T20:54:27.539775"
-        },
-        {
-            "id": "TK-8912",
-            "user_id": "u2",
-            "subject": "Printer on 3rd floor offline",
-            "category": "Hardware",
-            "status": "Open",
-            "priority": "P4 - LOW",
-            "created_at": "2026-04-17T20:59:27.539777"
-        },
-        {
-            "id": "TK-8890",
-            "user_id": "u2",
-            "subject": "Password reset for email",
-            "category": "Access",
-            "status": "Resolved",
-            "priority": "P4 - LOW",
-            "created_at": "2026-04-15T20:59:27.539778"
-        },
-        {
-            "id": "TK-8945",
-            "user_id": "u3",
-            "subject": "Adobe Acrobat keeps crashing on startup",
+            "id": "TK-3628",
+            "user_id": "u-65e0d9bf",
+            "subject": "Escalation of Figma software license request",
             "category": "Software",
             "status": "Open",
             "priority": "P4 - LOW",
-            "created_at": "2026-04-18T15:59:27.539781"
-        },
-        {
-            "id": "TK-8946",
-            "user_id": "u1",
-            "subject": "Requesting an ergonomic wireless mouse",
-            "category": "Hardware",
-            "status": "Resolved",
-            "priority": "P4 - LOW",
-            "created_at": "2026-04-13T20:59:27.539783"
-        },
-        {
-            "id": "TK-8947",
-            "user_id": "u2",
-            "subject": "Cannot access shared Marketing Drive (Google Workspace)",
-            "category": "Access",
-            "status": "In Progress",
-            "priority": "P3 - MEDIUM",
-            "created_at": "2026-04-18T19:59:27.539785"
-        },
-        {
-            "id": "TK-9190",
-            "user_id": "u-e0f9c0d0",
-            "subject": "Auto-Escalated Support Ticket",
-            "category": "Escalated",
-            "status": "Open",
-            "history": [
-                {
-                    "role": "user",
-                    "content": "VPN issue"
-                },
-                {
-                    "role": "bot",
-                    "content": "VPN authentication failures are often due to a desynced 2FA token. Open the Cisco AnyConnect client, clear the cache, and re-authenticate. If it still fails, check your WiFi stability.\n\nDid this resolve your issue? (Yes/No)"
-                },
-                {
-                    "role": "user",
-                    "content": "Escalate to human"
-                },
-                {
-                    "role": "bot",
-                    "content": "I apologize, but I am unable to resolve this. I have escalated this to our human IT team. Your ticket ID is **TK-9190**."
-                }
-            ],
-            "created_at": "2026-04-18T21:36:29.649629"
-        },
-        {
-            "id": "TK-1845",
-            "user_id": "u-e0f9c0d0",
-            "subject": "Auto-Escalated Support Ticket",
-            "category": "Escalated",
-            "status": "Open",
-            "priority": "P3 - MEDIUM",
-            "history": [
-                {
-                    "role": "user",
-                    "content": "Reset password"
-                },
-                {
-                    "role": "bot",
-                    "content": "I can help with that, but I need a bit more information.\n\nWhich password are you trying to reset?\n\u2022 Windows login  \n\u2022 Email account (Gmail, Outlook, etc.)  \n\u2022 Office 365 / Microsoft account  \n\u2022 Mac login  \n\u2022 Something else  \n\nLet me know the account or system, and I\u2019ll give you the exact steps.\n\nDid this resolve your issue? (Yes/No)"
-                },
-                {
-                    "role": "user",
-                    "content": "Email"
-                },
-                {
-                    "role": "bot",
-                    "content": "I can help with that. What specific email issue are you experiencing?\n\nExamples:\n\u2022 Trouble sending or receiving emails  \n\u2022 Password or login problems  \n\u2022 Email not syncing on phone or computer  \n\u2022 Setting up a new email account  \n\u2022 Missing or deleted messages  \n\nTell me what\u2019s going on and I\u2019ll guide you through it.\n\nDid this resolve your issue? (Yes/No)"
-                },
-                {
-                    "role": "user",
-                    "content": "No"
-                },
-                {
-                    "role": "bot",
-                    "content": "I'm sorry that didn't work. Could you provide a bit more detail about the error?"
-                },
-                {
-                    "role": "user",
-                    "content": "No"
-                },
-                {
-                    "role": "bot",
-                    "content": "I apologize, but I am unable to resolve this. I have escalated this to our human IT team. Your ticket ID is **TK-1845**."
-                }
-            ],
-            "created_at": "2026-04-19T14:21:38.723793",
-            "updated_at": "2026-04-19T14:21:38.723807"
-        },
-        {
-            "id": "TK-4222",
-            "user_id": "u-e0f9c0d0",
-            "subject": "Auto-Escalated Support Ticket",
-            "category": "Escalated",
-            "status": "Open",
-            "priority": "P3 - MEDIUM",
-            "history": [
-                {
-                    "role": "user",
-                    "content": "VPN issue"
-                },
-                {
-                    "role": "bot",
-                    "content": "VPN authentication failures are often due to a desynced 2FA token. Open the Cisco AnyConnect client, clear the cache, and re-authenticate. If it still fails, check your WiFi stability.\n\nDid this resolve your issue? (Yes/No)"
-                },
-                {
-                    "role": "user",
-                    "content": "No"
-                },
-                {
-                    "role": "bot",
-                    "content": "I'm sorry that didn't work. Could you provide a bit more detail about the error?"
-                },
-                {
-                    "role": "user",
-                    "content": "No"
-                },
-                {
-                    "role": "bot",
-                    "content": "I apologize, but I am unable to resolve this. I have escalated this to our human IT team. Your ticket ID is **TK-4222**."
-                }
-            ],
-            "created_at": "2026-04-19T14:30:13.714248",
-            "updated_at": "2026-04-19T14:30:13.714261"
-        }
-    ],
-    "chats": {
-        "c-1776528384060-594": {
-            "history": [
-                {
-                    "role": "user",
-                    "content": "VPN issue"
-                },
-                {
-                    "role": "bot",
-                    "content": "VPN authentication failures are often due to a desynced 2FA token. Open the Cisco AnyConnect client, clear the cache, and re-authenticate. If it still fails, check your WiFi stability.\n\nDid this resolve your issue? (Yes/No)"
-                },
-                {
-                    "role": "user",
-                    "content": "Escalate to human"
-                },
-                {
-                    "role": "bot",
-                    "content": "I apologize, but I am unable to resolve this. I have escalated this to our human IT team. Your ticket ID is **TK-9190**."
-                }
-            ],
-            "failed_attempts": 0
-        },
-        "c-1776531881000-539": {
             "history": [
                 {
                     "role": "user",
@@ -275,7 +308,439 @@
                 },
                 {
                     "role": "bot",
-                    "content": "Standard peripherals (mice, keyboards, headsets) can be picked up directly from the IT Helpdesk on the 2nd floor between 9 AM and 4 PM. No ticket is required for standard items.\n\nDid this resolve your issue? (Yes/No)"
+                    "content": "Sure \u2014 I can help with that.  \nWhich software are you requesting?\n\nExamples I can assist with:  \n\u2022 Figma  \n\u2022 Adobe (Acrobat / Creative Cloud)  \n\u2022 Developer tools  \n\u2022 Any standard corporate apps\n\nTell me the name of the software and I\u2019ll start the correct request or guide you through the process.\n\nDid this resolve your issue? (Yes/No)"
+                },
+                {
+                    "role": "user",
+                    "content": "Figma"
+                },
+                {
+                    "role": "bot",
+                    "content": "Got it \u2014 Figma request.\n\nHere\u2019s what I can do:\n\n\u2022 Figma licenses require manager approval.  \n\u2022 I\u2019ve automatically routed a license provisioning request to your department head.  \n\u2022 Once approved (usually 1\u20132 business days), Figma will appear in your Self\u2011Service App Portal at apps.company.com.  \n\u2022 For urgent needs, you can speed things up by CC\u2019ing your manager on the approval email you\u2019ll receive shortly.\n\nIf you need help checking the request status, just let me know.\n\nDid this resolve your issue? (Yes/No)"
+                },
+                {
+                    "role": "user",
+                    "content": "No"
+                },
+                {
+                    "role": "bot",
+                    "content": "I'm sorry that didn't work. Could you provide a bit more detail about the error?"
+                },
+                {
+                    "role": "user",
+                    "content": "Escalate the ticket"
+                },
+                {
+                    "role": "bot",
+                    "content": "I have escalated this to our human IT team.\n\n\ud83d\udccb **Ticket Created: TK-3628**\n\u2022 Priority: P4 - LOW\n\u2022 Category: Software\n\u2022 Assigned to: Priya Sharma\n\n[View Ticket \u2192](/tickets/TK-3628)"
+                }
+            ],
+            "created_at": "2026-04-23T19:42:13.186357",
+            "updated_at": "2026-04-23T19:42:13.186372",
+            "llm_analysis": {
+                "sentiment": "neutral",
+                "urgency_score": 3
+            },
+            "assignee_id": "t1",
+            "assignee": {
+                "id": "t1",
+                "name": "Priya Sharma",
+                "email": "priya.s@company.com",
+                "role": "Technician"
+            }
+        },
+        {
+            "id": "TK-8559",
+            "user_id": "u-65e0d9bf",
+            "subject": "Unable to connect to VPN",
+            "category": "Network",
+            "status": "Open",
+            "priority": "P2 - HIGH",
+            "history": [
+                {
+                    "role": "user",
+                    "content": "User unable to connect to VPN Issue"
+                }
+            ],
+            "created_at": "2026-04-23T20:14:16.100518",
+            "updated_at": "2026-04-23T20:14:16.100530",
+            "llm_analysis": {
+                "sentiment": "neutral",
+                "urgency_score": 6
+            },
+            "assignee_id": "a2",
+            "assignee": {
+                "id": "a2",
+                "name": "Marcus Chen",
+                "email": "m.chen@company.com",
+                "role": "Technician"
+            }
+        },
+        {
+            "id": "TK-1708",
+            "user_id": "u-65e0d9bf",
+            "subject": "Printer remains offline and cannot be set up despite troubleshooting",
+            "category": "Hardware",
+            "status": "Open",
+            "priority": "P3 - MEDIUM",
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Printer setup"
+                },
+                {
+                    "role": "bot",
+                    "content": "If the printer shows as offline: 1) Verify it has paper and no paper jams (open the front panel to check). 2) Press and hold the WiFi button for 3 seconds to reconnect to 'Corp-Devices' network. 3) On your computer, go to Settings \u2192 Printers \u2192 Remove the printer \u2192 Re-add it. 4) For persistent issues, the printer model/serial is on the label \u2014 include it when escalating."
+                },
+                {
+                    "role": "user",
+                    "content": "Not working"
+                },
+                {
+                    "role": "bot",
+                    "content": "I'm sorry that didn't work. Could you provide a bit more detail about the error?"
+                },
+                {
+                    "role": "user",
+                    "content": "NO"
+                },
+                {
+                    "role": "bot",
+                    "content": "I apologize, but I am unable to resolve this. I have escalated this to our human IT team.\n\n\ud83d\udccb **Ticket Created: TK-1708**\n\u2022 Priority: P3 - MEDIUM\n\u2022 Category: Hardware\n\u2022 Assigned to: Marcus Chen\n\n[View Ticket \u2192](/tickets/TK-1708)"
+                }
+            ],
+            "created_at": "2026-04-23T20:30:52.158708",
+            "updated_at": "2026-04-23T20:30:52.158718",
+            "llm_analysis": {
+                "sentiment": "frustrated",
+                "urgency_score": 5
+            },
+            "assignee_id": "a2",
+            "assignee": {
+                "id": "a2",
+                "name": "Marcus Chen",
+                "email": "m.chen@company.com",
+                "role": "Technician"
+            }
+        },
+        {
+            "id": "TK-5926",
+            "user_id": "u-65e0d9bf",
+            "subject": "User cannot connect to Wi-Fi",
+            "category": "Network",
+            "status": "Open",
+            "priority": "P2 - HIGH",
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Unable to connect to Wi-Fi Issue"
+                }
+            ],
+            "created_at": "2026-04-23T20:34:11.329767",
+            "updated_at": "2026-04-23T20:34:11.329784",
+            "llm_analysis": {
+                "sentiment": "neutral",
+                "urgency_score": 6
+            },
+            "assignee_id": "a2",
+            "assignee": {
+                "id": "a2",
+                "name": "Marcus Chen",
+                "email": "m.chen@company.com",
+                "role": "Technician"
+            }
+        },
+        {
+            "id": "TK-6267",
+            "user_id": "u-65e0d9bf",
+            "subject": "User unable to connect to Corp\u2011WiFi network",
+            "category": "Network",
+            "status": "Open",
+            "priority": "P2 - HIGH",
+            "history": [
+                {
+                    "role": "user",
+                    "content": "I am not able to connect to wifi"
+                },
+                {
+                    "role": "bot",
+                    "content": "Perform the following steps in order:\n\n1. Forget the 'Corp-WiFi' network and reconnect.  \n2. Flush DNS:  \n   - Windows: run `ipconfig /flushdns`  \n   - Mac: run `sudo dscacheutil -flushcache`  \n3. Connect to 'Corp-Guest' to confirm your wireless hardware is functioning.  \n4. If you are on the 3rd floor south wing, relocate closer to a known access point due to documented dead spots.  \n5. Submit a network diagnostic at: netdiag.company.com."
+                },
+                {
+                    "role": "user",
+                    "content": "Escalate to human"
+                },
+                {
+                    "role": "bot",
+                    "content": "I have escalated this to our human IT team.\n\n\ud83d\udccb **Ticket Created: TK-6267**\n\u2022 Priority: P2 - HIGH\n\u2022 Category: Network\n\u2022 Assigned to: Marcus Chen\n\n[View Ticket \u2192](/tickets/TK-6267)"
+                }
+            ],
+            "created_at": "2026-04-23T20:34:28.022107",
+            "updated_at": "2026-04-23T20:34:28.022119",
+            "llm_analysis": {
+                "sentiment": "urgent",
+                "urgency_score": 7
+            },
+            "assignee_id": "a2",
+            "assignee": {
+                "id": "a2",
+                "name": "Marcus Chen",
+                "email": "m.chen@company.com",
+                "role": "Technician"
+            }
+        }
+    ],
+    "chats": {
+        "c-1776952615656-64": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Printer setup"
+                },
+                {
+                    "role": "bot",
+                    "content": "If the printer shows as offline: 1) Verify it has paper and no paper jams (open the front panel to check). 2) Press and hold the WiFi button for 3 seconds to reconnect to 'Corp-Devices' network. 3) On your computer, go to Settings \u2192 Printers \u2192 Remove the printer \u2192 Re-add it. 4) For persistent issues, the printer model/serial is on the label \u2014 include it when escalating.\n\nDid this resolve your issue? (Yes/No)"
+                },
+                {
+                    "role": "user",
+                    "content": "Request software"
+                },
+                {
+                    "role": "bot",
+                    "content": "Standard peripherals (mice, keyboards, headsets, webcams) can be picked up directly from the IT Supply Room on the 2nd floor between 9 AM and 4 PM. No ticket required for standard items. Ergonomic equipment (standing desk converters, special chairs) requires manager approval \u2014 submit a request at equipment.company.com.\n\nDid this resolve your issue? (Yes/No)"
+                }
+            ],
+            "failed_attempts": 0
+        },
+        "c-1776952671464-184": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Printer setup"
+                },
+                {
+                    "role": "bot",
+                    "content": "If the printer shows as offline: 1) Verify it has paper and no paper jams (open the front panel to check). 2) Press and hold the WiFi button for 3 seconds to reconnect to 'Corp-Devices' network. 3) On your computer, go to Settings \u2192 Printers \u2192 Remove the printer \u2192 Re-add it. 4) For persistent issues, the printer model/serial is on the label \u2014 include it when escalating.\n\nDid this resolve your issue? (Yes/No)"
+                }
+            ],
+            "failed_attempts": 0
+        },
+        "c-1776953012567-533": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Printer setup"
+                },
+                {
+                    "role": "bot",
+                    "content": "If the printer shows as offline: 1) Verify it has paper and no paper jams (open the front panel to check). 2) Press and hold the WiFi button for 3 seconds to reconnect to 'Corp-Devices' network. 3) On your computer, go to Settings \u2192 Printers \u2192 Remove the printer \u2192 Re-add it. 4) For persistent issues, the printer model/serial is on the label \u2014 include it when escalating.\n\nDid this resolve your issue? (Yes/No)"
+                }
+            ],
+            "failed_attempts": 0
+        },
+        "c-1776953022917-741": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Printer setup"
+                },
+                {
+                    "role": "bot",
+                    "content": "If the printer shows as offline: 1) Verify it has paper and no paper jams (open the front panel to check). 2) Press and hold the WiFi button for 3 seconds to reconnect to 'Corp-Devices' network. 3) On your computer, go to Settings \u2192 Printers \u2192 Remove the printer \u2192 Re-add it. 4) For persistent issues, the printer model/serial is on the label \u2014 include it when escalating.\n\nDid this resolve your issue? (Yes/No)"
+                }
+            ],
+            "failed_attempts": 0
+        },
+        "c-1776953065840-589": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Printer setup"
+                },
+                {
+                    "role": "bot",
+                    "content": "If the printer shows as offline: 1) Verify it has paper and no paper jams (open the front panel to check). 2) Press and hold the WiFi button for 3 seconds to reconnect to 'Corp-Devices' network. 3) On your computer, go to Settings \u2192 Printers \u2192 Remove the printer \u2192 Re-add it. 4) For persistent issues, the printer model/serial is on the label \u2014 include it when escalating.\n\nDid this resolve your issue? (Yes/No)"
+                }
+            ],
+            "failed_attempts": 0
+        },
+        "c-1776953132592-651": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Printer setup"
+                },
+                {
+                    "role": "bot",
+                    "content": "Got it \u2014 I can help you set up a printer. I just need a bit more detail first.\n\nWhich of these applies to you?\n\u2022 You want to add an office printer to your computer  \n\u2022 You\u2019re setting up a new workstation and need to reconnect to an existing printer  \n\u2022 You have a personal/home printer you\u2019re trying to use for work  \n\u2022 The printer is showing as offline or not printing\n\nIf you just need the standard office printer setup, here are the steps:\n\nWindows:\n1. Open Settings \u2192 Devices \u2192 Printers & scanners.  \n2. Click Add a printer or scanner.  \n3. Wait for the list to populate and select the printer with the correct floor/room label.  \n4. If it doesn\u2019t appear, choose Add manually \u2192 Add a printer using TCP/IP \u2192 enter the printer\u2019s IP (usually printed on a label on the printer).  \n5. Test print a page.\n\nMac:\n1. Open System Settings \u2192 Printers & Scanners.  \n2. Click Add Printer (+).  \n3. Select the printer that appears in the list.  \n4. If not visible, choose IP \u2192 enter the printer\u2019s IP address \u2192 Protocol: IPP or HP JetDirect depending on model.  \n5. Add and print a test page.\n\nIf the printer shows as offline:\n1. Check the printer for paper jams or no paper.  \n2. Press and hold the WiFi button on the printer for 3 seconds to reconnect it to the Corp-Devices network.  \n3. Remove the printer from your computer and re-add it.\n\nTell me which printer model or location you\u2019re trying to set up and I can walk you through the exact steps.\n\nDid this resolve your issue? (Yes/No)"
+                },
+                {
+                    "role": "user",
+                    "content": "No"
+                },
+                {
+                    "role": "bot",
+                    "content": "I'm sorry that didn't work. Could you provide a bit more detail about the error?"
+                },
+                {
+                    "role": "user",
+                    "content": "No"
+                },
+                {
+                    "role": "bot",
+                    "content": "I apologize, but I am unable to resolve this. I have escalated this to our human IT team.\n\n\ud83d\udccb **Ticket Created: TK-5856**\n\u2022 Priority: P4 - LOW\n\u2022 Category: Hardware\n\u2022 Assigned to: Marcus Chen\n\n[View Ticket \u2192](/tickets/TK-5856)"
+                }
+            ],
+            "failed_attempts": 2
+        },
+        "c-1776953312665-210": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Request software"
+                },
+                {
+                    "role": "bot",
+                    "content": "Sure \u2014 I can help with that.  \nWhich software are you requesting?\n\nExamples I can assist with:  \n\u2022 Figma  \n\u2022 Adobe (Acrobat / Creative Cloud)  \n\u2022 Developer tools  \n\u2022 Any standard corporate apps\n\nTell me the name of the software and I\u2019ll start the correct request or guide you through the process.\n\nDid this resolve your issue? (Yes/No)"
+                },
+                {
+                    "role": "user",
+                    "content": "Figma"
+                },
+                {
+                    "role": "bot",
+                    "content": "Got it \u2014 Figma request.\n\nHere\u2019s what I can do:\n\n\u2022 Figma licenses require manager approval.  \n\u2022 I\u2019ve automatically routed a license provisioning request to your department head.  \n\u2022 Once approved (usually 1\u20132 business days), Figma will appear in your Self\u2011Service App Portal at apps.company.com.  \n\u2022 For urgent needs, you can speed things up by CC\u2019ing your manager on the approval email you\u2019ll receive shortly.\n\nIf you need help checking the request status, just let me know.\n\nDid this resolve your issue? (Yes/No)"
+                },
+                {
+                    "role": "user",
+                    "content": "No"
+                },
+                {
+                    "role": "bot",
+                    "content": "I'm sorry that didn't work. Could you provide a bit more detail about the error?"
+                },
+                {
+                    "role": "user",
+                    "content": "Escalate the ticket"
+                },
+                {
+                    "role": "bot",
+                    "content": "I have escalated this to our human IT team.\n\n\ud83d\udccb **Ticket Created: TK-3628**\n\u2022 Priority: P4 - LOW\n\u2022 Category: Software\n\u2022 Assigned to: Priya Sharma\n\n[View Ticket \u2192](/tickets/TK-3628)"
+                }
+            ],
+            "failed_attempts": 0
+        },
+        "c-1776954073577-966": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Printer setup"
+                },
+                {
+                    "role": "bot",
+                    "content": "If the printer shows as offline: 1) Verify it has paper and no paper jams (open the front panel to check). 2) Press and hold the WiFi button for 3 seconds to reconnect to 'Corp-Devices' network. 3) On your computer, go to Settings \u2192 Printers \u2192 Remove the printer \u2192 Re-add it. 4) For persistent issues, the printer model/serial is on the label \u2014 include it when escalating.\n\nDid this resolve your issue? (Yes/No)"
+                }
+            ],
+            "failed_attempts": 0
+        },
+        "c-1776954234139-48": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Request software"
+                },
+                {
+                    "role": "bot",
+                    "content": "Standard peripherals (mice, keyboards, headsets, webcams) can be picked up directly from the IT Supply Room on the 2nd floor between 9 AM and 4 PM. No ticket required for standard items. Ergonomic equipment (standing desk converters, special chairs) requires manager approval \u2014 submit a request at equipment.company.com.\n\nDid this resolve your issue? (Yes/No)"
+                },
+                {
+                    "role": "user",
+                    "content": "VPN issue"
+                },
+                {
+                    "role": "bot",
+                    "content": "VPN authentication failures are often due to a desynced 2FA token. Steps: 1) Open the Cisco AnyConnect client. 2) Click the gear icon \u2192 Preferences \u2192 Clear cache. 3) Restart the client and re-authenticate. 4) If it still fails, check your WiFi stability and disconnect from any personal VPNs. 5) Ensure your corporate password has not expired.\n\nDid this resolve your issue? (Yes/No)"
+                }
+            ],
+            "failed_attempts": 0
+        },
+        "c-1776954261339-225": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Request software"
+                },
+                {
+                    "role": "bot",
+                    "content": "Sure\u2014what software do you need?\n\nTo submit a software request, I\u2019ll need:\n- The software name  \n- Version (if applicable)  \n- Whether you need it on a company\u2011managed laptop, VDI, or server  \n- Business justification (1\u20132 sentences)\n\nSend me that info and I can create the request for you.\n\nDid this resolve your issue? (Yes/No)"
+                },
+                {
+                    "role": "user",
+                    "content": "No"
+                },
+                {
+                    "role": "bot",
+                    "content": "Got it \u2014 let\u2019s get you the right help.\n\nCan you tell me what issue you\u2019re trying to resolve?  \nFor example: password reset, Wi\u2011Fi, VPN, printer, monitor, badge access, shared drive, or something else.\n\nI\u2019ll walk you through the exact steps.\n\nDid this resolve your issue? (Yes/No)"
+                }
+            ],
+            "failed_attempts": 0
+        },
+        "c-1776954448358-181": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Printer setup"
+                },
+                {
+                    "role": "bot",
+                    "content": "Here\u2019s how to set up a printer:\n\n1. Connect the printer to power and turn it on.\n2. Ensure it\u2019s connected to the network:\n   \u2022 For WiFi printers: Use the printer\u2019s menu to join the Corp-Print (or your office) network.  \n   \u2022 For wired printers: Plug in the Ethernet cable and wait for the network light to stabilize.\n3. On your computer:\n   \u2022 Windows:  \n     - Open Settings \u2192 Devices \u2192 Printers & scanners  \n     - Click Add a printer  \n     - Select the printer from the list\n   \u2022 macOS:  \n     - Open System Settings \u2192 Printers & Scanners  \n     - Click Add Printer  \n     - Choose the printer from the list\n4. Print a test page to confirm everything works.\n\nIf the printer appears offline after adding it, follow the troubleshooting steps:  \n1. Check for paper and clear any jams.  \n2. Press the printer\u2019s Power/Reset button once to refresh its status.  \n3. Restart your computer and try printing again.\n\nDid this resolve your issue? (Yes/No)"
+                }
+            ],
+            "failed_attempts": 0
+        },
+        "c-1776954520434-434": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Printer setup"
+                },
+                {
+                    "role": "bot",
+                    "content": "If the printer shows as offline: 1) Verify it has paper and no paper jams (open the front panel to check). 2) Press and hold the WiFi button for 3 seconds to reconnect to 'Corp-Devices' network. 3) On your computer, go to Settings \u2192 Printers \u2192 Remove the printer \u2192 Re-add it. 4) For persistent issues, the printer model/serial is on the label \u2014 include it when escalating.\n\nDid this resolve your issue? (Yes/No)"
+                }
+            ],
+            "failed_attempts": 0
+        },
+        "c-1776954533953-367": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Request software"
+                },
+                {
+                    "role": "bot",
+                    "content": "Sure \u2014 I can help with that.  \nWhat software do you need?\n\nIf it\u2019s something like Figma, Adobe, Zoom, etc., I can walk you through the process or submit the request automatically. Just tell me the app name.\n\nDid this resolve your issue? (Yes/No)"
+                },
+                {
+                    "role": "user",
+                    "content": "Adobe"
+                },
+                {
+                    "role": "bot",
+                    "content": "It looks like you need help with Adobe, but I\u2019m not sure what specifically is happening.\n\nCommon Adobe support topics I can help with:\n\u2022 Acrobat crashing  \n\u2022 PDF won\u2019t open  \n\u2022 Creative Cloud login issues  \n\u2022 Installation or licensing problems  \n\nCan you tell me what exactly is happening with Adobe on your device?\n\nDid this resolve your issue? (Yes/No)"
+                }
+            ],
+            "failed_attempts": 0
+        },
+        "c-1776954739651-41": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Request software"
+                },
+                {
+                    "role": "bot",
+                    "content": "Sure \u2014 I can help with that.\n\nWhich software are you requesting?  \nPlease tell me the exact app name (for example: Figma, Adobe Acrobat, Zoom, etc.) so I can check the process and submit the correct request for you.\n\nDid this resolve your issue? (Yes/No)"
                 },
                 {
                     "role": "user",
@@ -284,11 +749,61 @@
                 {
                     "role": "bot",
                     "content": "Great! I'm glad I could help. Closing this chat."
+                },
+                {
+                    "role": "user",
+                    "content": "hi"
+                },
+                {
+                    "role": "bot",
+                    "content": "Hi there! How can I help you today?\n\nDid this resolve your issue? (Yes/No)"
+                },
+                {
+                    "role": "user",
+                    "content": "show me your knowledgebase"
+                },
+                {
+                    "role": "bot",
+                    "content": "I can\u2019t display the internal knowledge base verbatim, but I *can* give you a clear summary of the categories and the types of issues covered. Just tell me which topic you want help with.\n\nHere\u2019s a high\u2011level overview of what I can assist with:\n\n\u2022 Access issues  \n  - Password resets, locked accounts  \n  - Shared drive/Google Workspace permissions  \n  - New\u2011hire onboarding and account provisioning  \n  - Building badge and physical access  \n\n\u2022 Network issues  \n  - VPN (Cisco AnyConnect) errors  \n  - WiFi connectivity, slow/no internet, DNS issues  \n\n\u2022 Hardware issues  \n  - Printers (offline, jams, scanning)  \n  - Monitors and external display problems  \n  - Peripherals (mouse, keyboard, webcam, docks)  \n  - Laptop performance, overheating, slowness  \n\n\u2022 Software issues  \n  - Figma licensing and installation  \n  - Adobe Acrobat/Creative Cloud crashes  \n  - Zoom or Teams camera/mic/audio issues  \n\n\u2022 Infrastructure incidents  \n  - Database outages  \n  - Emergency escalation protocols  \n\n\u2022 Development tools  \n  - Node/npm permission errors  \n  - Git SSH key problems  \n  - Jenkins CI/CD build failures  \n\n\u2022 Email issues  \n  - Outlook not syncing  \n  - Mailbox full/quota problems  \n\n\u2022 Security  \n  - MFA/Authenticator problems  \n  - Phishing or suspicious email procedures  \n\n\u2022 Mobile device management  \n  - Intune/Company Portal setup for iPhone/Android  \n  - Mobile VPN configuration  \n\nIf you want details for any specific section, tell me what topic you want to see and I\u2019ll expand it.\n\nDid this resolve your issue? (Yes/No)"
                 }
             ],
             "failed_attempts": 0
         },
-        "c-1776588576389-823": {
+        "c-1776955197102-395": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Request software"
+                },
+                {
+                    "role": "bot",
+                    "content": "Standard peripherals (mice, keyboards, headsets, webcams) can be picked up directly from the IT Supply Room on the 2nd floor between 9 AM and 4 PM. No ticket required for standard items. Ergonomic equipment (standing desk converters, special chairs) requires manager approval \u2014 submit a request at equipment.company.com.\n\nDid this resolve your issue? (Yes/No)"
+                }
+            ],
+            "failed_attempts": 0
+        },
+        "c-1776955212033-322": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Request software"
+                },
+                {
+                    "role": "bot",
+                    "content": "Specify the exact software name. Software cannot be provisioned without identifying the application."
+                },
+                {
+                    "role": "user",
+                    "content": "I wanna install Antigravity in my system"
+                },
+                {
+                    "role": "bot",
+                    "content": "The Python module **antigravity** is a built\u2011in standard library module. It cannot be \u201cinstalled\u201d because it already exists in any standard Python installation.\n\nVerification steps:\n\n1. Confirm Python is installed:  \n   python3 --version\n\n2. Open Python REPL:  \n   python3\n\n3. Import the module:  \n   import antigravity\n\nIf the import runs without error, the module is present.  \nIf you receive a module\u2011not\u2011found error, your Python installation is incomplete or corrupted. Reinstall Python from python.org or your internal software portal.\n\nNo further installation steps exist for this module."
+                }
+            ],
+            "failed_attempts": 0
+        },
+        "c-1776955281780-758": {
             "history": [
                 {
                     "role": "user",
@@ -296,58 +811,90 @@
                 },
                 {
                     "role": "bot",
-                    "content": "[LLM Response] Based on your query 'VPN issue', I have analyzed our knowledge base and IT runbook database. Here are my recommended steps: Please restart the affected service, clear your local cache, and if the issue persists, our team will escalate to a Level 2 technician automatically.\n\nDid this resolve your issue? (Yes/No)"
+                    "content": "Perform the standard VPN troubleshooting sequence:\n\n1. Open the Cisco AnyConnect client.  \n2. Click the gear icon \u2192 Preferences \u2192 Clear cache.  \n3. Close and restart the AnyConnect client.  \n4. Re-authenticate using your corporate credentials and 2FA.  \n5. Verify WiFi stability; disconnect from any personal VPNs.  \n6. Confirm your corporate password is not expired by logging into identity.company.com.\n\nIf the issue persists, specify the exact error message (e.g., timeout, authentication failed, connection refused)."
                 }
             ],
             "failed_attempts": 0
         },
-        "c-1776588616030-834": {
+        "c-1776955621981-62": {
             "history": [
                 {
                     "role": "user",
                     "content": "Request software"
+                },
+                {
+                    "role": "bot",
+                    "content": "Standard peripherals (mice, keyboards, headsets, webcams) can be picked up directly from the IT Supply Room on the 2nd floor between 9 AM and 4 PM. No ticket required for standard items. Ergonomic equipment (standing desk converters, special chairs) requires manager approval \u2014 submit a request at equipment.company.com."
+                },
+                {
+                    "role": "user",
+                    "content": "VPN issue"
+                },
+                {
+                    "role": "bot",
+                    "content": "VPN authentication failures are often due to a desynced 2FA token. Steps: 1) Open the Cisco AnyConnect client. 2) Click the gear icon \u2192 Preferences \u2192 Clear cache. 3) Restart the client and re-authenticate. 4) If it still fails, check your WiFi stability and disconnect from any personal VPNs. 5) Ensure your corporate password has not expired."
+                },
+                {
+                    "role": "user",
+                    "content": "No"
+                },
+                {
+                    "role": "bot",
+                    "content": "I'm sorry that didn't work. Could you provide a bit more detail about the error?"
+                }
+            ],
+            "failed_attempts": 1
+        },
+        "c-1776955994268-739": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Printer setup"
+                },
+                {
+                    "role": "bot",
+                    "content": "If the printer shows as offline: 1) Verify it has paper and no paper jams (open the front panel to check). 2) Press and hold the WiFi button for 3 seconds to reconnect to 'Corp-Devices' network. 3) On your computer, go to Settings \u2192 Printers \u2192 Remove the printer \u2192 Re-add it. 4) For persistent issues, the printer model/serial is on the label \u2014 include it when escalating."
+                },
+                {
+                    "role": "user",
+                    "content": "qib"
                 },
                 {
                     "role": "bot",
                     "content": "I couldn't find a direct fix for that. Could you try rephrasing your issue?"
+                },
+                {
+                    "role": "user",
+                    "content": "qsbx"
+                },
+                {
+                    "role": "bot",
+                    "content": "I couldn't find a direct fix for that. Could you try rephrasing your issue?"
+                },
+                {
+                    "role": "user",
+                    "content": "Yes, issue is resolved"
+                },
+                {
+                    "role": "bot",
+                    "content": "Great! I'm glad I could help. Closing this chat."
                 }
             ],
             "failed_attempts": 0
         },
-        "c-1776588634495-667": {
+        "c-1776956417844-951": {
             "history": [
                 {
                     "role": "user",
-                    "content": "Request software"
+                    "content": "Printer setup"
                 },
                 {
                     "role": "bot",
-                    "content": "I can help with that \u2014 I just need a bit more information.\n\nPlease specify:\n\u2022 The software you need  \n\u2022 The device or operating system (Windows, macOS, etc.)  \n\u2022 Whether you need installation, access, or a license  \n\nOnce I have that, I\u2019ll provide the exact steps.\n\nDid this resolve your issue? (Yes/No)"
-                }
-            ],
-            "failed_attempts": 0
-        },
-        "c-1776588655086-392": {
-            "history": [
-                {
-                    "role": "user",
-                    "content": "Reset password"
-                },
-                {
-                    "role": "bot",
-                    "content": "I can help with that, but I need a bit more information.\n\nWhich password are you trying to reset?\n\u2022 Windows login  \n\u2022 Email account (Gmail, Outlook, etc.)  \n\u2022 Office 365 / Microsoft account  \n\u2022 Mac login  \n\u2022 Something else  \n\nLet me know the account or system, and I\u2019ll give you the exact steps.\n\nDid this resolve your issue? (Yes/No)"
+                    "content": "If the printer shows as offline: 1) Verify it has paper and no paper jams (open the front panel to check). 2) Press and hold the WiFi button for 3 seconds to reconnect to 'Corp-Devices' network. 3) On your computer, go to Settings \u2192 Printers \u2192 Remove the printer \u2192 Re-add it. 4) For persistent issues, the printer model/serial is on the label \u2014 include it when escalating."
                 },
                 {
                     "role": "user",
-                    "content": "Email"
-                },
-                {
-                    "role": "bot",
-                    "content": "I can help with that. What specific email issue are you experiencing?\n\nExamples:\n\u2022 Trouble sending or receiving emails  \n\u2022 Password or login problems  \n\u2022 Email not syncing on phone or computer  \n\u2022 Setting up a new email account  \n\u2022 Missing or deleted messages  \n\nTell me what\u2019s going on and I\u2019ll guide you through it.\n\nDid this resolve your issue? (Yes/No)"
-                },
-                {
-                    "role": "user",
-                    "content": "No"
+                    "content": "Not working"
                 },
                 {
                     "role": "bot",
@@ -355,16 +902,39 @@
                 },
                 {
                     "role": "user",
-                    "content": "No"
+                    "content": "NO"
                 },
                 {
                     "role": "bot",
-                    "content": "I apologize, but I am unable to resolve this. I have escalated this to our human IT team. Your ticket ID is **TK-1845**."
+                    "content": "I apologize, but I am unable to resolve this. I have escalated this to our human IT team.\n\n\ud83d\udccb **Ticket Created: TK-1708**\n\u2022 Priority: P3 - MEDIUM\n\u2022 Category: Hardware\n\u2022 Assigned to: Marcus Chen\n\n[View Ticket \u2192](/tickets/TK-1708)"
                 }
             ],
-            "failed_attempts": 2
+            "failed_attempts": 0,
+            "interaction_count": 0
         },
-        "c-1776589201158-436": {
+        "c-1776956459342-787": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Request software"
+                },
+                {
+                    "role": "bot",
+                    "content": "Specify the exact software name. Without the software name, no request can be processed."
+                },
+                {
+                    "role": "user",
+                    "content": "Adobe"
+                },
+                {
+                    "role": "bot",
+                    "content": "Specify the exact Adobe issue (e.g., Acrobat crashing, installation failure, Creative Cloud login). I cannot proceed without the specific fault."
+                }
+            ],
+            "failed_attempts": 0,
+            "interaction_count": 2
+        },
+        "c-1776956571700-653": {
             "history": [
                 {
                     "role": "user",
@@ -372,36 +942,28 @@
                 },
                 {
                     "role": "bot",
-                    "content": "VPN authentication failures are often due to a desynced 2FA token. Open the Cisco AnyConnect client, clear the cache, and re-authenticate. If it still fails, check your WiFi stability.\n\nDid this resolve your issue? (Yes/No)"
-                },
-                {
-                    "role": "user",
-                    "content": "No"
-                },
-                {
-                    "role": "bot",
-                    "content": "I'm sorry that didn't work. Could you provide a bit more detail about the error?"
-                },
-                {
-                    "role": "user",
-                    "content": "No"
-                },
-                {
-                    "role": "bot",
-                    "content": "I apologize, but I am unable to resolve this. I have escalated this to our human IT team. Your ticket ID is **TK-4222**."
+                    "content": "VPN authentication failures are often due to a desynced 2FA token. Steps: 1) Open the Cisco AnyConnect client. 2) Click the gear icon \u2192 Preferences \u2192 Clear cache. 3) Restart the client and re-authenticate. 4) If it still fails, check your WiFi stability and disconnect from any personal VPNs. 5) Ensure your corporate password has not expired.\n\nDid this resolve your issue? (Yes/No)"
                 }
             ],
-            "failed_attempts": 2
+            "failed_attempts": 0
         },
-        "c-1776621348944-912": {
+        "c-1776956584033-157": {
             "history": [
                 {
                     "role": "user",
-                    "content": "Request software"
+                    "content": "I am not able to connect to wifi"
                 },
                 {
                     "role": "bot",
-                    "content": "Standard peripherals (mice, keyboards, headsets) can be picked up directly from the IT Helpdesk on the 2nd floor between 9 AM and 4 PM. No ticket is required for standard items.\n\nDid this resolve your issue? (Yes/No)"
+                    "content": "Perform the following steps in order:\n\n1. Forget the 'Corp-WiFi' network and reconnect.  \n2. Flush DNS:  \n   - Windows: run `ipconfig /flushdns`  \n   - Mac: run `sudo dscacheutil -flushcache`  \n3. Connect to 'Corp-Guest' to confirm your wireless hardware is functioning.  \n4. If you are on the 3rd floor south wing, relocate closer to a known access point due to documented dead spots.  \n5. Submit a network diagnostic at: netdiag.company.com."
+                },
+                {
+                    "role": "user",
+                    "content": "Escalate to human"
+                },
+                {
+                    "role": "bot",
+                    "content": "I have escalated this to our human IT team.\n\n\ud83d\udccb **Ticket Created: TK-6267**\n\u2022 Priority: P2 - HIGH\n\u2022 Category: Network\n\u2022 Assigned to: Marcus Chen\n\n[View Ticket \u2192](/tickets/TK-6267)"
                 }
             ],
             "failed_attempts": 0
@@ -415,9 +977,56 @@
                 "password",
                 "reset",
                 "forgot",
-                "locked"
+                "locked",
+                "account locked"
             ],
-            "resolution_steps": "To reset your password, please navigate to identity.company.com/reset. You will need your mobile device to approve the Okta Verify push notification."
+            "resolution_steps": "To reset your password, please navigate to identity.company.com/reset. You will need your mobile device to approve the Okta Verify push notification. If your account is locked, wait 15 minutes before retrying, or contact the IT Helpdesk for an immediate unlock.",
+            "severity": "medium",
+            "estimated_resolution_time": "5 minutes"
+        },
+        {
+            "id": "kb8",
+            "category": "Access",
+            "keywords": [
+                "drive",
+                "shared folder",
+                "marketing",
+                "google workspace",
+                "permission",
+                "shared drive"
+            ],
+            "resolution_steps": "Access to departmental Shared Drives is managed via Google Groups. I can automatically submit an access request to the 'Marketing-All' Google Group owners for you. Typical approval takes 1-2 business hours.",
+            "severity": "low",
+            "estimated_resolution_time": "2 hours"
+        },
+        {
+            "id": "kb11",
+            "category": "Access",
+            "keywords": [
+                "new hire",
+                "onboarding",
+                "account",
+                "provisioning",
+                "first day"
+            ],
+            "resolution_steps": "New hire provisioning includes: 1) Active Directory account creation, 2) Email setup, 3) VPN credentials, 4) Building access badge. All provisioning is automated via the HR-IT pipeline. Please verify your manager has submitted the onboarding request in ServiceNow. Expected SLA: 24 hours before start date.",
+            "severity": "medium",
+            "estimated_resolution_time": "24 hours"
+        },
+        {
+            "id": "kb12",
+            "category": "Access",
+            "keywords": [
+                "badge",
+                "access card",
+                "building",
+                "door",
+                "entry",
+                "physical access"
+            ],
+            "resolution_steps": "For badge access issues: 1) Verify your badge is not expired (check the date printed on the back). 2) Try tapping firmly on the reader. 3) If your badge is lost, visit Security on the 1st floor with photo ID for a temporary badge. A replacement will be issued within 48 hours.",
+            "severity": "low",
+            "estimated_resolution_time": "30 minutes"
         },
         {
             "id": "kb2",
@@ -427,9 +1036,28 @@
                 "connect",
                 "timeout",
                 "authentication failed",
-                "cisco"
+                "cisco",
+                "anyconnect",
+                "remote"
             ],
-            "resolution_steps": "VPN authentication failures are often due to a desynced 2FA token. Open the Cisco AnyConnect client, clear the cache, and re-authenticate. If it still fails, check your WiFi stability."
+            "resolution_steps": "VPN authentication failures are often due to a desynced 2FA token. Steps: 1) Open the Cisco AnyConnect client. 2) Click the gear icon \u2192 Preferences \u2192 Clear cache. 3) Restart the client and re-authenticate. 4) If it still fails, check your WiFi stability and disconnect from any personal VPNs. 5) Ensure your corporate password has not expired.",
+            "severity": "high",
+            "estimated_resolution_time": "15 minutes"
+        },
+        {
+            "id": "kb13",
+            "category": "Network",
+            "keywords": [
+                "wifi",
+                "wireless",
+                "slow internet",
+                "no internet",
+                "connected no internet",
+                "dns"
+            ],
+            "resolution_steps": "For WiFi connectivity issues: 1) Forget the 'Corp-WiFi' network and reconnect. 2) Run 'ipconfig /flushdns' (Windows) or 'sudo dscacheutil -flushcache' (Mac). 3) Try the 'Corp-Guest' network to verify hardware works. 4) If on a floor with known dead spots (3F south wing), relocate closer to an access point. 5) Submit a network diagnostic at netdiag.company.com.",
+            "severity": "medium",
+            "estimated_resolution_time": "20 minutes"
         },
         {
             "id": "kb3",
@@ -438,20 +1066,13 @@
                 "printer",
                 "offline",
                 "print",
-                "jam"
+                "jam",
+                "paper jam",
+                "scanning"
             ],
-            "resolution_steps": "If the printer shows as offline, first verify it has paper and no paper jams. Then, press and hold the WiFi button on the printer for 3 seconds to reconnect it to the 'Corp-Devices' network."
-        },
-        {
-            "id": "kb4",
-            "category": "Software",
-            "keywords": [
-                "figma",
-                "install",
-                "license",
-                "software request"
-            ],
-            "resolution_steps": "Figma licenses require manager approval. Since you requested Figma, I am automatically routing a license provisioning request to your department head. Once approved, it will appear in your Self-Service App Portal."
+            "resolution_steps": "If the printer shows as offline: 1) Verify it has paper and no paper jams (open the front panel to check). 2) Press and hold the WiFi button for 3 seconds to reconnect to 'Corp-Devices' network. 3) On your computer, go to Settings \u2192 Printers \u2192 Remove the printer \u2192 Re-add it. 4) For persistent issues, the printer model/serial is on the label \u2014 include it when escalating.",
+            "severity": "low",
+            "estimated_resolution_time": "10 minutes"
         },
         {
             "id": "kb5",
@@ -461,9 +1082,91 @@
                 "screen",
                 "monitor",
                 "display",
-                "conference"
+                "conference",
+                "external display",
+                "hdmi"
             ],
-            "resolution_steps": "Monitor flickering is usually caused by a loose HDMI or USB-C connection. Please unplug the display cable from your laptop, wait 5 seconds, and plug it back in firmly. Also, check the connection at the back of the monitor."
+            "resolution_steps": "Monitor flickering troubleshooting: 1) Unplug the display cable (HDMI/USB-C/DisplayPort) from your laptop and wait 5 seconds. 2) Plug it back in firmly. 3) Check the connection at the back of the monitor. 4) Try a different cable if available. 5) For conference room displays, use the 'AV Reset' button on the room control panel. 6) If using a USB-C dock, try connecting directly to the monitor.",
+            "severity": "medium",
+            "estimated_resolution_time": "10 minutes"
+        },
+        {
+            "id": "kb10",
+            "category": "Hardware",
+            "keywords": [
+                "mouse",
+                "keyboard",
+                "ergonomic",
+                "request",
+                "peripheral",
+                "headset",
+                "webcam",
+                "dock"
+            ],
+            "resolution_steps": "Standard peripherals (mice, keyboards, headsets, webcams) can be picked up directly from the IT Supply Room on the 2nd floor between 9 AM and 4 PM. No ticket required for standard items. Ergonomic equipment (standing desk converters, special chairs) requires manager approval \u2014 submit a request at equipment.company.com.",
+            "severity": "low",
+            "estimated_resolution_time": "Same day"
+        },
+        {
+            "id": "kb14",
+            "category": "Hardware",
+            "keywords": [
+                "laptop",
+                "slow",
+                "performance",
+                "fan noise",
+                "hot",
+                "overheating",
+                "startup slow"
+            ],
+            "resolution_steps": "For laptop performance issues: 1) Restart your laptop (not just sleep/wake). 2) Check Task Manager (Ctrl+Shift+Esc) for high CPU/memory processes. 3) Run Disk Cleanup. 4) Ensure Windows/macOS updates are current. 5) If the laptop is over 3 years old, you may be eligible for a refresh \u2014 check asset.company.com for your device age.",
+            "severity": "medium",
+            "estimated_resolution_time": "30 minutes"
+        },
+        {
+            "id": "kb4",
+            "category": "Software",
+            "keywords": [
+                "figma",
+                "install",
+                "license",
+                "software request",
+                "software install"
+            ],
+            "resolution_steps": "Figma licenses require manager approval. Since you requested Figma, I am automatically routing a license provisioning request to your department head. Once approved (typically 1-2 business days), it will appear in your Self-Service App Portal at apps.company.com. For urgent requests, CC your manager on the approval email.",
+            "severity": "low",
+            "estimated_resolution_time": "2 business days"
+        },
+        {
+            "id": "kb9",
+            "category": "Software",
+            "keywords": [
+                "adobe",
+                "acrobat",
+                "crash",
+                "close",
+                "pdf",
+                "creative cloud"
+            ],
+            "resolution_steps": "If Adobe Acrobat is crashing on startup: 1) Close all Adobe apps. 2) Navigate to %APPDATA%\\Adobe\\Acrobat\\ (Windows) or ~/Library/Preferences/Adobe/ (Mac). 3) Rename the 'Preferences' folder to 'Preferences_old'. 4) Restart Adobe Acrobat. 5) If using Creative Cloud, sign out and back in. 6) Run the Adobe Cleaner Tool from helpx.adobe.com if issues persist.",
+            "severity": "low",
+            "estimated_resolution_time": "15 minutes"
+        },
+        {
+            "id": "kb15",
+            "category": "Software",
+            "keywords": [
+                "zoom",
+                "teams",
+                "video",
+                "microphone",
+                "camera",
+                "audio",
+                "meeting"
+            ],
+            "resolution_steps": "Video conferencing troubleshooting: 1) Check Settings \u2192 Audio/Video in the app to ensure the correct device is selected. 2) Close other apps that might be using the camera (check System Tray). 3) Test at zoom.us/test or Teams test call. 4) Ensure browser permissions allow camera/mic access. 5) Update the app to the latest version. 6) If using a dock, try connecting directly.",
+            "severity": "medium",
+            "estimated_resolution_time": "10 minutes"
         },
         {
             "id": "kb6",
@@ -473,9 +1176,12 @@
                 "down",
                 "unresponsive",
                 "outage",
-                "cluster"
+                "cluster",
+                "production"
             ],
-            "resolution_steps": "CRITICAL INCIDENT PROTOCOL: Database unresponsiveness requires immediate escalation. Do not attempt manual restarts. Executing the 'Emergency DB Connection Drain' runbook is recommended for Level 3 Engineers."
+            "resolution_steps": "CRITICAL INCIDENT PROTOCOL: Database unresponsiveness requires immediate escalation. Do NOT attempt manual restarts. Steps: 1) Check status.company.com for known outages. 2) Execute the 'Emergency DB Connection Drain' runbook (available to Level 3 Engineers). 3) Notify the on-call DBA via PagerDuty. 4) Open a P1 incident bridge at bridge.company.com/p1.",
+            "severity": "critical",
+            "estimated_resolution_time": "Immediate escalation"
         },
         {
             "id": "kb7",
@@ -486,45 +1192,123 @@
                 "eacces",
                 "permission",
                 "denied",
-                "install"
+                "install",
+                "npm install"
             ],
-            "resolution_steps": "NPM EACCES errors happen when installing global packages without root permissions. Do not use 'sudo'. Instead, configure npm to use a different directory by running: `npm config set prefix '~/.npm-global'`."
+            "resolution_steps": "NPM EACCES errors happen when installing global packages without root permissions. Do NOT use 'sudo'. Fix: 1) Run: npm config set prefix '~/.npm-global'. 2) Add to your shell profile: export PATH=~/.npm-global/bin:$PATH. 3) Restart your terminal. Alternatively, use 'npx' to run packages without global install.",
+            "severity": "low",
+            "estimated_resolution_time": "5 minutes"
         },
         {
-            "id": "kb8",
-            "category": "Access",
+            "id": "kb16",
+            "category": "Development",
             "keywords": [
-                "drive",
-                "shared folder",
-                "marketing",
-                "google workspace",
-                "permission"
+                "git",
+                "clone",
+                "ssh",
+                "push",
+                "pull",
+                "permission denied",
+                "repository"
             ],
-            "resolution_steps": "Access to departmental Shared Drives is managed via Google Groups. I can automatically submit an access request to the 'Marketing-All' Google Group owners for you."
+            "resolution_steps": "Git SSH issues: 1) Check if your SSH key is loaded: 'ssh-add -l'. 2) If empty, add your key: 'ssh-add ~/.ssh/id_ed25519'. 3) Test connectivity: 'ssh -T git@github.com'. 4) If you don't have an SSH key, generate one: 'ssh-keygen -t ed25519 -C your.email@company.com'. 5) Add the public key to your GitHub/GitLab profile under Settings \u2192 SSH Keys.",
+            "severity": "low",
+            "estimated_resolution_time": "10 minutes"
         },
         {
-            "id": "kb9",
-            "category": "Software",
+            "id": "kb17",
+            "category": "Development",
             "keywords": [
-                "adobe",
-                "acrobat",
-                "crash",
-                "close",
-                "pdf"
+                "jenkins",
+                "ci/cd",
+                "pipeline",
+                "build",
+                "deploy",
+                "failed",
+                "ci"
             ],
-            "resolution_steps": "If Adobe Acrobat is crashing on startup, your user preferences file might be corrupted. Navigate to %APPDATA%\\Adobe\\Acrobat\\ and delete the 'Preferences' folder, then restart the application."
+            "resolution_steps": "Jenkins pipeline failures: 1) Check the build console output for the specific error. 2) Common issues: expired credentials (rotate in Jenkins Credentials Manager), insufficient disk space (check /var/jenkins), or dependency resolution failures (clear the Maven/npm cache). 3) For infrastructure issues, check jenkins.company.com/systemInfo. 4) Contact the Platform Engineering team for infrastructure-level failures.",
+            "severity": "high",
+            "estimated_resolution_time": "30 minutes"
         },
         {
-            "id": "kb10",
-            "category": "Hardware",
+            "id": "kb18",
+            "category": "Email",
             "keywords": [
-                "mouse",
-                "keyboard",
-                "ergonomic",
-                "request",
-                "peripheral"
+                "outlook",
+                "sync",
+                "email not syncing",
+                "inbox",
+                "send",
+                "receive",
+                "email"
             ],
-            "resolution_steps": "Standard peripherals (mice, keyboards, headsets) can be picked up directly from the IT Helpdesk on the 2nd floor between 9 AM and 4 PM. No ticket is required for standard items."
+            "resolution_steps": "Outlook sync issues: 1) Check your internet connection. 2) Toggle Work Offline mode off (Send/Receive tab \u2192 Work Offline). 3) Try Outlook Web at outlook.office365.com to verify the issue is client-side. 4) Repair your Outlook profile: Control Panel \u2192 Mail \u2192 Show Profiles \u2192 Repair. 5) If mailbox is full, archive old emails or request a quota increase from your manager.",
+            "severity": "medium",
+            "estimated_resolution_time": "15 minutes"
+        },
+        {
+            "id": "kb19",
+            "category": "Email",
+            "keywords": [
+                "mailbox",
+                "full",
+                "quota",
+                "storage",
+                "out of space",
+                "archive"
+            ],
+            "resolution_steps": "Mailbox quota exceeded: 1) Delete large/old emails with attachments (sort by size). 2) Empty Deleted Items and Junk folders. 3) Enable Online Archive: Settings \u2192 View All Outlook Settings \u2192 General \u2192 Storage \u2192 Enable Archive. 4) For a permanent quota increase (requires manager approval), submit a request at it.company.com/email-quota.",
+            "severity": "low",
+            "estimated_resolution_time": "10 minutes"
+        },
+        {
+            "id": "kb20",
+            "category": "Security",
+            "keywords": [
+                "mfa",
+                "two factor",
+                "2fa",
+                "authenticator",
+                "otp",
+                "verification code"
+            ],
+            "resolution_steps": "MFA setup/issues: 1) Go to security.company.com/mfa to manage your MFA settings. 2) For a new device, scan the QR code with Microsoft Authenticator or Google Authenticator. 3) If locked out (lost phone), contact the IT Helpdesk with your employee ID for a temporary bypass code. 4) Hardware security keys (YubiKey) can be registered as a backup at the same portal.",
+            "severity": "high",
+            "estimated_resolution_time": "10 minutes"
+        },
+        {
+            "id": "kb21",
+            "category": "Security",
+            "keywords": [
+                "phishing",
+                "suspicious",
+                "spam",
+                "scam",
+                "malware",
+                "virus",
+                "threat"
+            ],
+            "resolution_steps": "Suspicious email protocol: 1) Do NOT click any links or download attachments. 2) Use the 'Report Phishing' button in Outlook (Home tab \u2192 Report Message). 3) If you already clicked a link, immediately change your password at identity.company.com/reset. 4) Run a full antivirus scan. 5) Forward the email to security@company.com with the header information.",
+            "severity": "critical",
+            "estimated_resolution_time": "Immediate"
+        },
+        {
+            "id": "kb22",
+            "category": "Mobile",
+            "keywords": [
+                "mobile",
+                "phone",
+                "mdm",
+                "intune",
+                "company portal",
+                "iphone",
+                "android",
+                "tablet"
+            ],
+            "resolution_steps": "Mobile device enrollment: 1) Download 'Intune Company Portal' from App Store/Google Play. 2) Sign in with your corporate email. 3) Follow the enrollment wizard (takes ~3 minutes). 4) Once enrolled, company apps (Outlook, Teams, OneDrive) will auto-install. 5) For VPN on mobile, download 'Cisco AnyConnect' and use the server address: vpn.company.com. 6) If enrollment fails, ensure your device OS meets minimum requirements (iOS 16+ / Android 13+).",
+            "severity": "low",
+            "estimated_resolution_time": "15 minutes"
         }
     ]
 }
