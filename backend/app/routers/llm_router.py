@@ -4,7 +4,7 @@ LLM Router — Toggle and status endpoints for the KB provider.
 from fastapi import APIRouter
 from pydantic import BaseModel
 from app.services.kb_service import KnowledgeBaseService
-from app.services.llm_service import is_azure_configured
+from app.services.llm_service import is_llm_configured
 
 router = APIRouter()
 
@@ -15,11 +15,11 @@ class LLMToggleRequest(BaseModel):
 
 @router.get("/status")
 async def get_llm_status():
-    """Returns current LLM mode, provider name, and whether Azure is configured."""
+    """Returns current LLM mode, provider name, and whether LLM is configured."""
     return {
         "mode": KnowledgeBaseService.get_current_mode(),
         "provider": KnowledgeBaseService.get_provider_name(),
-        "azure_configured": is_azure_configured(),
+        "llm_configured": is_llm_configured(),
     }
 
 

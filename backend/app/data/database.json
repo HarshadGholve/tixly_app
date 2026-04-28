@@ -488,6 +488,53 @@
                 "email": "m.chen@company.com",
                 "role": "Technician"
             }
+        },
+        {
+            "id": "TK-4279",
+            "user_id": "u-65e0d9bf",
+            "subject": "Printer Setup Issue - Unable to Connect",
+            "category": "Hardware",
+            "status": "Open",
+            "priority": "P2 - HIGH",
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Printer setup"
+                },
+                {
+                    "role": "bot",
+                    "content": "To troubleshoot the printer setup, please check the following steps:\n\n1. Verify the printer has paper and no paper jams (open the front panel to check).\n2. Press and hold the WiFi button for 3 seconds to reconnect to 'Corp-Devices' network.\n3. On your computer, go to Settings \u2192 Printers \u2192 Remove the printer \u2192 Re-add it.\n \nIf the issue persists, include the printer model/serial number (found on the label) in your response so I can provide further assistance."
+                },
+                {
+                    "role": "user",
+                    "content": "No"
+                },
+                {
+                    "role": "bot",
+                    "content": "I'm sorry that didn't work. Could you provide a bit more detail about the error?"
+                },
+                {
+                    "role": "user",
+                    "content": "No"
+                },
+                {
+                    "role": "bot",
+                    "content": "I apologize, but I am unable to resolve this. I have escalated this to our human IT team.\n\n\ud83d\udccb **Ticket Created: TK-4279**\n\u2022 Priority: P2 - HIGH\n\u2022 Category: Hardware\n\u2022 Assigned to: James Wilson\n\n[View Ticket \u2192](/tickets/TK-4279)"
+                }
+            ],
+            "created_at": "2026-04-28T11:37:20.333970",
+            "updated_at": "2026-04-28T11:37:20.333982",
+            "llm_analysis": {
+                "sentiment": "frustrated",
+                "urgency_score": 6
+            },
+            "assignee_id": "t2",
+            "assignee": {
+                "id": "t2",
+                "name": "James Wilson",
+                "email": "james.w@company.com",
+                "role": "Technician"
+            }
         }
     ],
     "chats": {
@@ -967,6 +1014,48 @@
                 }
             ],
             "failed_attempts": 0
+        },
+        "c-1777356414710-125": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "VPN issue"
+                },
+                {
+                    "role": "bot",
+                    "content": "VPN authentication failures are often due to a desynced 2FA token. Steps: 1) Open the Cisco AnyConnect client. 2) Click the gear icon \u2192 Preferences \u2192 Clear cache. 3) Restart the client and re-authenticate. 4) If it still fails, check your WiFi stability and disconnect from any personal VPNs. 5) Ensure your corporate password has not expired.\n\nDid this resolve your issue? (Yes/No)"
+                }
+            ],
+            "failed_attempts": 0
+        },
+        "c-1777356422090-588": {
+            "history": [
+                {
+                    "role": "user",
+                    "content": "Printer setup"
+                },
+                {
+                    "role": "bot",
+                    "content": "To troubleshoot the printer setup, please check the following steps:\n\n1. Verify the printer has paper and no paper jams (open the front panel to check).\n2. Press and hold the WiFi button for 3 seconds to reconnect to 'Corp-Devices' network.\n3. On your computer, go to Settings \u2192 Printers \u2192 Remove the printer \u2192 Re-add it.\n \nIf the issue persists, include the printer model/serial number (found on the label) in your response so I can provide further assistance."
+                },
+                {
+                    "role": "user",
+                    "content": "No"
+                },
+                {
+                    "role": "bot",
+                    "content": "I'm sorry that didn't work. Could you provide a bit more detail about the error?"
+                },
+                {
+                    "role": "user",
+                    "content": "No"
+                },
+                {
+                    "role": "bot",
+                    "content": "I apologize, but I am unable to resolve this. I have escalated this to our human IT team.\n\n\ud83d\udccb **Ticket Created: TK-4279**\n\u2022 Priority: P2 - HIGH\n\u2022 Category: Hardware\n\u2022 Assigned to: James Wilson\n\n[View Ticket \u2192](/tickets/TK-4279)"
+                }
+            ],
+            "failed_attempts": 2
         }
     },
     "kb": [

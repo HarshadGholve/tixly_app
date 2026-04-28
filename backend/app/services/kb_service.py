@@ -4,10 +4,10 @@ KnowledgeBase Service — Strategy Pattern Implementation with Runtime Toggle.
 Architecture:
   KBProvider (ABC)
     ├── MockKBProvider   — keyword-matching against local KB_ARTICLES (DEFAULT)
-    └── LLMKBProvider    — Azure OpenAI-powered resolution
+    └── LLMKBProvider    — Groq-powered resolution
 
 Runtime toggle:
-    KnowledgeBaseService.toggle_provider("llm")   # switches to Azure OpenAI
+    KnowledgeBaseService.toggle_provider("llm")   # switches to Groq
     KnowledgeBaseService.toggle_provider("mock")   # switches back to keyword match
 """
 import os
@@ -45,24 +45,22 @@ class MockKBProvider(KBProvider):
 
 
 # ─────────────────────────────────────────────
-# LLM KB Provider — Azure OpenAI
+# LLM KB Provider — Groq
 # ─────────────────────────────────────────────
 class LLMKBProvider(KBProvider):
     """
-    Uses Azure OpenAI to generate IT support resolutions.
+    Uses Groq to generate IT support resolutions.
     Reads credentials from environment variables.
     """
     def __init__(self):
-        from openai import AzureOpenAI
+        from groq import Groq
 
-        self.client = AzureOpenAI(
-            azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT", "").strip().strip('"').strip("'"),
-            api_key=os.getenv("AZURE_OPENAI_API_KEY", "").strip().strip('"').strip("'"),
-            api_version=os.getenv("AZURE_OPENAI_API_VERSION", "2024-12-01-preview").strip().strip('"').strip("'"),
+        self.client = Groq(
+            api_key=os.getenv("GROQ_API_KEY", "").strip().strip('"').strip("'"),
             timeout=60.0,
             max_retries=2
         )
-        self.deployment_name = os.getenv("AZURE_OPENAI_DEPLOYMENT", "").strip().strip('"').strip("'")
+        self.deployment_name = "llama-3.1-8b-instant"
         print(f"[KBService] LLMKBProvider initialized → {self.deployment_name}")
 
     def search(self, query: str) -> str | None:
@@ -93,7 +91,7 @@ class LLMKBProvider(KBProvider):
             )
             return response.choices[0].message.content
         except Exception as e:
-            print(f"[KBService] Azure OpenAI Error: {e}")
+            print(f"[KBService] Groq Error: {e}")
             # Fallback to keyword search on LLM failure
             mock = MockKBProvider()
             return mock.search(query)

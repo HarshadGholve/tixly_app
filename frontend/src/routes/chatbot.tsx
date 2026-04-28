@@ -107,7 +107,7 @@ function ChatbotPage() {
   // LLM Toggle state
   const [llmMode, setLlmMode] = useState<"mock" | "llm">("mock");
   const [llmToggling, setLlmToggling] = useState(false);
-  const [azureConfigured, setAzureConfigured] = useState(false);
+  const [llmConfigured, setLlmConfigured] = useState(false);
 
   // Ticket popup state
   const [ticketPopup, setTicketPopup] = useState<TicketPopup | null>(null);
@@ -120,7 +120,7 @@ function ChatbotPage() {
     fetchApi("/llm/status")
       .then((res) => {
         setLlmMode(res.mode);
-        setAzureConfigured(res.azure_configured);
+        setLlmConfigured(res.llm_configured);
       })
       .catch(() => {});
   }, []);
@@ -250,14 +250,14 @@ function ChatbotPage() {
             {/* LLM Toggle */}
             <button
               onClick={toggleLLM}
-              disabled={llmToggling || !azureConfigured || messages.length > 1}
+              disabled={llmToggling || !llmConfigured || messages.length > 1}
               className="inline-flex items-center gap-2 rounded-full border border-border/60 px-3 py-1.5 text-xs font-medium transition-all hover:border-brand-700 disabled:opacity-50"
               title={
-                !azureConfigured
-                  ? "Azure OpenAI not configured"
+                !llmConfigured
+                  ? "Groq API not configured"
                   : messages.length > 1
                   ? "Cannot change mode during an active chat"
-                  : `Currently: ${llmMode === "llm" ? "Azure AI" : "Mock KB"}`
+                  : `Currently: ${llmMode === "llm" ? "Groq AI" : "Mock KB"}`
               }
             >
               {llmToggling ? (
@@ -274,7 +274,7 @@ function ChatbotPage() {
                     : "bg-status-warning text-status-warning-foreground"
                 }`}
               >
-                {llmMode === "llm" ? "Azure AI" : "Mock KB"}
+                {llmMode === "llm" ? "Groq AI" : "Mock KB"}
               </span>
             </button>
           </div>

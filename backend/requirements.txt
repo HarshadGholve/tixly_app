@@ -4,3 +4,4 @@ pydantic[email]
 httpx
 python-dotenv
 openai
+groq

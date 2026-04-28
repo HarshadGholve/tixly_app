@@ -6,7 +6,7 @@ Provides:
   - match_technician(ticket_info, technicians) → best technician ID
   - generate_ticket_summary(chat_history) → clean subject line
 
-Each method checks for Azure OpenAI availability and falls back
+Each method checks for Groq availability and falls back
 to keyword-based heuristics when credentials are missing.
 """
 import os
@@ -15,49 +15,41 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# ─── Azure OpenAI Client (lazy init) ────────────────────────
+# ─── Groq Client (lazy init) ────────────────────────
 _client = None
 _deployment = None
 
 
 def _get_client():
-    """Lazy-initialize the Azure OpenAI client."""
+    """Lazy-initialize the Groq client."""
     global _client, _deployment
     if _client is not None:
         return _client, _deployment
 
-    endpoint = os.getenv("AZURE_OPENAI_ENDPOINT", "").strip().strip('"').strip("'")
-    api_key = os.getenv("AZURE_OPENAI_API_KEY", "").strip().strip('"').strip("'")
-    api_version = os.getenv("AZURE_OPENAI_API_VERSION", "2024-12-01-preview").strip().strip('"').strip("'")
-    _deployment = os.getenv("AZURE_OPENAI_DEPLOYMENT", "").strip().strip('"').strip("'")
+    api_key = os.getenv("GROQ_API_KEY", "").strip().strip('"').strip("'")
+    _deployment = "llama-3.1-8b-instant"
 
-    if not all([endpoint, api_key, _deployment]):
-        print("[LLMService] Azure OpenAI not configured — using fallback heuristics")
+    if not api_key:
+        print("[LLMService] Groq not configured — using fallback heuristics")
         return None, None
 
     try:
-        from openai import AzureOpenAI
-        _client = AzureOpenAI(
-            azure_endpoint=endpoint,
+        from groq import Groq
+        _client = Groq(
             api_key=api_key,
-            api_version=api_version,
             timeout=60.0,
             max_retries=2
         )
-        print(f"[LLMService] Azure OpenAI client initialized → {_deployment}")
+        print(f"[LLMService] Groq client initialized → {_deployment}")
         return _client, _deployment
     except Exception as e:
-        print(f"[LLMService] Failed to init Azure OpenAI: {e}")
+        print(f"[LLMService] Failed to init Groq: {e}")
         return None, None
 
 
-def is_azure_configured() -> bool:
-    """Check if Azure OpenAI credentials are present in env."""
-    return all([
-        os.getenv("AZURE_OPENAI_ENDPOINT"),
-        os.getenv("AZURE_OPENAI_API_KEY"),
-        os.getenv("AZURE_OPENAI_DEPLOYMENT"),
-    ])
+def is_llm_configured() -> bool:
+    """Check if Groq API credentials are present in env."""
+    return bool(os.getenv("GROQ_API_KEY", "").strip())
 
 
 # ──────────────────────────────────────────────────────────────
